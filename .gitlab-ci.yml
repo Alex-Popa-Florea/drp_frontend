@@ -86,9 +86,8 @@ debugTests:
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
 
-image: ruby:2.7
-
 pages:
+  image: ruby:2.7
   script:
     - gem install bundler
     - bundle install
