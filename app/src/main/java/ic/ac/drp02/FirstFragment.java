@@ -119,9 +119,9 @@ public class FirstFragment extends Fragment {
         mHandler = new Handler(Looper.getMainLooper());
         Request request = new Request.Builder()
                 .url("https://drp02-backend.herokuapp.com/wardrobe")
-                .get()
+
                 .build();
-        //List<String> results = Collections.emptyList();
+        //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
