@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_itemDetails"
+            app:destination="@id/itemDetails" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,5 +27,13 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetails"
+        android:name="ic.ac.drp02.ItemDetails"
+        android:label="ItemDetails" >
+        <argument
+            android:name="item"
+            app:argType="string" />
     </fragment>
 </navigation>

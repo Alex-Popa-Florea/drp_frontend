@@ -8,34 +8,19 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="1000dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="194dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        android:layout_height="400dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/tags"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="900dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="139dp"
-        android:text="TextView"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="900dp"
-        android:layout_height="150dp"
+        android:id="@+id/tags"
+        android:layout_width="357dp"
+        android:layout_height="80dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="30dp"
@@ -45,5 +30,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="362dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="53dp"
+        android:text="TextView"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

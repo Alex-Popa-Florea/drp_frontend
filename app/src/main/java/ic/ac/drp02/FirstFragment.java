@@ -16,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.io.BufferedInputStream;
@@ -24,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -52,13 +55,18 @@ public class FirstFragment extends Fragment {
     ) {
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
-        String[] mobileArray = {"Light blue skinny jeans", "Gray formal trousers", "White t-shirt", "Black shirt",
-                "Denim jacket", "Stripey t-shirt", "Cargo trousers", "Puffer coat", "Blazer", "White trainers", "Boots", "Burgundy jumper", "Black flared jeans", "Dark blue straight-leg jeans", "Cream turtleneck jumper", "Black high neck jumper", "Gray sweatshirt", "Navy hoodie", "Long-sleeve t-shirt", "Blue t-shirt"};
 
-        View contentView = inflater.inflate(R.layout.fragment_first, container, false);
-        ListView listView = binding.getRoot().findViewById(R.id.lv1);
-        getWardrobe(listView);
+        RecyclerView recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerView);
+        // set a GridLayoutManager with default vertical orientation and 2 number of columns
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
+        recyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        WardrobeItem item1 = new WardrobeItem("https://lp.stories.com/app005prod?set=source[/39/bf/39bf9cb4d4f277a63570377db257604d8ecb0950.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],device[hdpi],quality[80],ImageVersion[1]&call=url[file:/product/main]", "Blue jumper", Arrays.asList("woolen", "blue"));
+        WardrobeItem item2 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"));
 
+        ArrayList<WardrobeItem> wardrobeItems = new ArrayList<>(Arrays.asList(item1, item2));
+        GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), wardrobeItems, this);
+        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
 
         return binding.getRoot();
 
@@ -131,24 +139,14 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-//                try (ResponseBody responseBody = response.body()) {
-//                    if (!response.isSuccessful())
-//                        throw new IOException("Unexpected code " + response);
 //
-//                    List<String> results = Collections.emptyList();
-//                    if (responseBody != null) {
-//
-//                        results = Arrays.asList(responseBody.string().split(","));
-//                        //results.remove(results.size() - 1);
-//                    }
-//
-//
-//                }
-
+                //PUT JSON INTO CLASSES LIST HERE
                 List<String> results = Arrays.asList(response.body().string().split(","));
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+                        //        GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), wardrobeItems, this);
+                        //        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
                         CustomAdapter listAdapter = new CustomAdapter(results);
                         listView.setAdapter(listAdapter);
                     }
