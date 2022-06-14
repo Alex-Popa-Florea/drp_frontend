@@ -6,65 +6,88 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/itemToAddDescription"
         android:layout_width="350dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="textStart"
         android:textSize="10sp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="477dp" />
+        app:layout_constraintBottom_toTopOf="@+id/additem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/tagsToAdd"
         android:layout_width="280dp"
         android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="31dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="textStart"
         android:textSize="10sp"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="377dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="350dp"
         android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="31dp"
         android:text="Item description:"
         android:textSize="25dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="427dp" />
+        app:layout_constraintBottom_toTopOf="@+id/itemToAddDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
     <Button
         android:id="@+id/additem"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="87dp"
         android:backgroundTint="#D9D9D9"
         android:text="Add item"
         android:textColor="#1F4B41"
         android:textColorLink="#D9D9D9"
         android:textSize="20sp"
         app:cornerRadius="25dp"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="594dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="350dp"
         android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="31dp"
         android:text="Tags:"
         android:textSize="25dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="377dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="225dp"
         android:layout_height="300dp"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="41dp" />
+        android:layout_marginTop="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemToAddDescription"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <Button
         android:id="@+id/uploadimage"
@@ -76,7 +99,10 @@
         android:textColorLink="#D9D9D9"
         android:textSize="20sp"
         app:cornerRadius="25dp"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="140dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.247" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
