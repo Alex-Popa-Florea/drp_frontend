@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="0dp"
         android:layout_height="550dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +33,7 @@
                 app:srcCompat="@drawable/button_grid" />
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/feed_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="60dp"
@@ -68,7 +69,7 @@
                 app:srcCompat="@drawable/streamlinehq_interface_share_interface_essential_600" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/feed_description"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
@@ -82,7 +83,7 @@
                 app:layout_constraintStart_toEndOf="@+id/imageButton2" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/feed_rating"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="5dp"
@@ -103,11 +104,11 @@
                 android:layout_marginEnd="120dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toEndOf="@+id/feed_rating"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/feed_tags"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="5dp"

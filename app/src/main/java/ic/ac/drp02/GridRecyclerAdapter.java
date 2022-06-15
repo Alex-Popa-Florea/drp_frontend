@@ -63,7 +63,7 @@ public class GridRecyclerAdapter extends RecyclerView.Adapter<GridRecyclerAdapte
 
 
                 NavHostFragment.findNavController(fragment)
-                        .navigate(R.id.action_FirstFragment_to_itemDetails, bundle);
+                        .navigate(R.id.action_profileFragment_to_itemDetails, bundle);
             }
         });
     }
