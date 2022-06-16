@@ -33,7 +33,8 @@ public class ItemDetails extends Fragment {
     private ItemDetailsBinding binding;
     ImageView selectedImage;
     TextView description;
-    TextView tags;
+    TextView itemName;
+    TextView itemType;
 
 
     @Override
@@ -52,7 +53,8 @@ public class ItemDetails extends Fragment {
 
         selectedImage = (ImageView) binding.getRoot().findViewById(R.id.imageView); // init a ImageView
         description = (TextView) binding.getRoot().findViewById(R.id.description);
-        tags = (TextView) binding.getRoot().findViewById(R.id.tags);
+        itemName = (TextView) binding.getRoot().findViewById(R.id.details_item_name);
+        itemType = (TextView) binding.getRoot().findViewById(R.id.details_item_type);
 
 
         Bundle bundle = this.getArguments();
@@ -60,7 +62,8 @@ public class ItemDetails extends Fragment {
         if (bundle != null) {
             Picasso.get().load(bundle.getString("image")).into(selectedImage);
             description.setText(bundle.getString("description"));
-            tags.setText(bundle.getString("tags"));
+            itemName.setText(bundle.getString("itemName"));
+            itemType.setText(bundle.getString("itemType"));
         }
 
 

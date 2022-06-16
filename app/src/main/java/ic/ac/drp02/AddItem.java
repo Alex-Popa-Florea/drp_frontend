@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +14,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import ic.ac.drp02.databinding.AddItemBinding;
-import ic.ac.drp02.databinding.FragmentSecondBinding;
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class AddItem extends Fragment {
 
@@ -54,8 +43,11 @@ public class AddItem extends Fragment {
             public void onClick(View view) {
                 EditText editDescription  = (EditText) binding.getRoot().findViewById(R.id.itemToAddDescription);
                 String descriptionToAdd = editDescription.getText().toString();
-                EditText editTags  = (EditText) binding.getRoot().findViewById(R.id.tagsToAdd);
-                String tagsToAdd = editTags.getText().toString();
+                EditText editName = (EditText) binding.getRoot().findViewById(R.id.itemName);
+                String nameToAdd = editDescription.getText().toString();
+                EditText editType = (EditText) binding.getRoot().findViewById(R.id.itemType);
+                String typeToAdd = editDescription.getText().toString();
+
                 //do shit with image bitmap
 //                Request request = new Request.Builder()
 //                        .url("https://drp02-backend.herokuapp.com/insert/"+itemToAdd)

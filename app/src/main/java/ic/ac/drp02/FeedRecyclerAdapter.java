@@ -1,7 +1,6 @@
 package ic.ac.drp02;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -41,7 +39,8 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         // to set data to textview and imageview of each card layout SORT THIS SHIT OUT
         WardrobeItem model = wardrobeItems.get(position);
         holder.description.setText(model.getDescription());
-        holder.tags.setText(model.getTagString());
+        holder.itemName.setText(model.getItemName());
+        holder.itemType.setText(model.getItemType());
         Picasso.get().load(model.getImageUrl()).into(holder.image);
 
         //do we actually want to be able to click on a post and go to item details? don't think so
@@ -76,13 +75,14 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     // your views such as TextView and Imageview.
     public static class Viewholder extends RecyclerView.ViewHolder {
         private final ImageView image;
-        private final TextView description, tags;
+        private final TextView description, itemName, itemType;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.feed_image);
             description = itemView.findViewById(R.id.feed_description);
-            tags = itemView.findViewById(R.id.feed_tags);
+            itemName = itemView.findViewById(R.id.item_name);
+            itemType = itemView.findViewById(R.id.item_type);
         }
     }
 }
