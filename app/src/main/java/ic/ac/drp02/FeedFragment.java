@@ -1,13 +1,18 @@
 package ic.ac.drp02;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +45,22 @@ public class FeedFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         return binding.getRoot();
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+//        Log.e("adhithi", "lkfjklfj");
+        super.onViewCreated(view, savedInstanceState);
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+        Log.e("adhithi", "bottomNavigationView.toString()");
+//        bottomNavigationView.setOnItemSelectedListener(item -> {
+//            if (item.getItemId() == R.id.profile) {
+//                NavHostFragment.findNavController(FeedFragment.this)
+//                        .navigate(R.id.action_feedFragment_to_profileFragment);
+//                bottomNavigationView.setSelectedItemId(R.id.profile);
+//                return true;
+//            }
+//            return false;
+//        });
     }
 
     @Override

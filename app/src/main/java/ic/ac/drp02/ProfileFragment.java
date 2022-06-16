@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,6 +71,17 @@ public class ProfileFragment extends Fragment {
                         .navigate(R.id.action_profileFragment_to_addItem);
             }
         });
+
+//        BottomNavigationView bottomNavigationView = binding.getRoot().findViewById(R.id.bottomNavigationView);
+//        bottomNavigationView.setOnItemSelectedListener(item -> {
+//            if (item.getItemId() == R.id.home) {
+//                NavHostFragment.findNavController(ProfileFragment.this)
+//                        .navigate(R.id.action_profileFragment_to_feedFragment);
+//                bottomNavigationView.setSelectedItemId(R.id.home);
+//                return true;
+//            }
+//            return false;
+//        });
 
 
     }

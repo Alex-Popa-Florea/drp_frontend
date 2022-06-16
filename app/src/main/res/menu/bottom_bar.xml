@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        app:itemIconSize="100dp"
+        android:icon="@drawable/streamlinehq_interface_home_3_interface_essential_600"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/streamlinehq_interface_user_circle_interface_essential_600"/>
+</menu>
