@@ -155,7 +155,7 @@ public class ProfileFragment extends Fragment {
                 Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
                 List<WardrobeItem> wardrobeItems = new Gson().fromJson(response.body().string(), listType);
 
-
+                //Log.e("adhithi", wardrobeItems.get(0).getItemName());
 
 //                Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
 //                List<WardrobeItem> yourClassList = new Gson().fromJson(response.body().string(), listType);
