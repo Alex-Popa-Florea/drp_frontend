@@ -45,7 +45,7 @@
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/likeButtonFeed"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -65,7 +65,7 @@
                 android:background="@null"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintStart_toEndOf="@+id/likeButtonFeed"
                 app:srcCompat="@drawable/streamlinehq_interface_share_interface_essential_600" />
 
             <TextView

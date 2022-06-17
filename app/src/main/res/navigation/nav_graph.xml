@@ -42,5 +42,16 @@
         <action
             android:id="@+id/action_profileFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_likesFragment"
+            app:destination="@id/likesFragment" />
     </fragment><action android:id="@+id/action_global_feedFragment" app:destination="@id/feedFragment"/><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
+    <fragment
+        android:id="@+id/likesFragment"
+        android:name="ic.ac.drp02.LikesFragment"
+        android:label="LikesFragment" >
+        <action
+            android:id="@+id/action_likesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

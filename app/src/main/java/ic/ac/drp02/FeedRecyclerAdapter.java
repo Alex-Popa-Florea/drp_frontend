@@ -1,6 +1,8 @@
 package ic.ac.drp02;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +10,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import ic.ac.drp02.databinding.FeedBinding;
+import ic.ac.drp02.databinding.PostLayoutBinding;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapter.Viewholder>{
     private Context context;
     private ArrayList<WardrobeItem> wardrobeItems;
     Fragment fragment;
+    PostLayoutBinding binding;
+    private final OkHttpClient client = new OkHttpClient();
 
     // Constructor
     public FeedRecyclerAdapter(Context context, ArrayList<WardrobeItem> wardrobeItems, Fragment fragment) {
@@ -30,6 +47,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     @Override
     public FeedRecyclerAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // to inflate the layout for each item of recycler view.
+        //binding = FeedBinding.inflate(inflater, container, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
         return new Viewholder(view);
     }
@@ -62,6 +80,25 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
 //            }
 //        });
 
+        binding.likeButtonFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Request request = new Request.Builder()
+                        .url("https://drp02-backend.herokuapp.com/like_item/" + wardrobeItems.get(position).getId().toString())
+
+                        .build();
+                //List<String> results = Collections.emptyList();.get()
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                    }
+                });
+            }
+        });
     }
 
     @Override

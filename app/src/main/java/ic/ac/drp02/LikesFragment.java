@@ -27,17 +27,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import ic.ac.drp02.databinding.MyLikesBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import ic.ac.drp02.databinding.ProfileBinding;
-
-public class ProfileFragment extends Fragment {
+public class LikesFragment extends Fragment {
     private final OkHttpClient client = new OkHttpClient();
-    private ProfileBinding binding;
+    private MyLikesBinding binding;
     private Handler mHandler;
     private RecyclerView recyclerView;
     private Fragment fragment = this;
@@ -47,16 +46,16 @@ public class ProfileFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = ProfileBinding.inflate(inflater, container, false);
+        binding = MyLikesBinding.inflate(inflater, container, false);
 
         recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.recyclerView);
         // set a GridLayoutManager with default vertical orientation and 2 number of columns
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
         recyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
         //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        //WardrobeItem item1 = new WardrobeItem("https://lp.stories.com/app005prod?set=source[/39/bf/39bf9cb4d4f277a63570377db257604d8ecb0950.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],device[hdpi],quality[80],ImageVersion[1]&call=url[file:/product/main]", "Blue jumper", Arrays.asList("woolen", "blue"), "itemName", "itemType");
-        //WardrobeItem item2 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"), "itemName", "itemType");
-        //WardrobeItem item3 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"), "itemName", "itemType");
+//        WardrobeItem item1 = new WardrobeItem("https://lp.stories.com/app005prod?set=source[/39/bf/39bf9cb4d4f277a63570377db257604d8ecb0950.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],device[hdpi],quality[80],ImageVersion[1]&call=url[file:/product/main]", "Blue jumper", Arrays.asList("woolen", "blue"), "itemName", "itemType");
+//        WardrobeItem item2 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"), "itemName", "itemType");
+//        WardrobeItem item3 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"), "itemName", "itemType");
         //ArrayList<WardrobeItem> wardrobeItems = new ArrayList<>(Arrays.asList(item1, item2, item3));
 //        GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), wardrobeItems, this);
 //        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
@@ -69,19 +68,11 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ProfileFragment.this)
-                        .navigate(R.id.action_profileFragment_to_addItem);
-            }
-        });
-
         binding.myLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(ProfileFragment.this)
-                        .navigate(R.id.action_profileFragment_to_likesFragment);
+                NavHostFragment.findNavController(LikesFragment.this)
+                        .navigate(R.id.action_likesFragment_to_profileFragment);
             }
         });
 
@@ -163,7 +154,13 @@ public class ProfileFragment extends Fragment {
                 Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
                 List<WardrobeItem> wardrobeItems = new Gson().fromJson(response.body().string(), listType);
 
-                //Log.e("adhithi", wardrobeItems.get(0).getItemName());
+                List<WardrobeItem> likedItems = new ArrayList<>();
+
+                for (WardrobeItem item : wardrobeItems) {
+                    if (item.getLikes() > 0) {
+                        likedItems.add(item);
+                    }
+                }
 
 //                Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
 //                List<WardrobeItem> yourClassList = new Gson().fromJson(response.body().string(), listType);
@@ -171,7 +168,7 @@ public class ProfileFragment extends Fragment {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                                GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment);
+                                GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(likedItems), fragment);
                                 recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
                                 Log.e("adhithi",wardrobeItems.toString());
 

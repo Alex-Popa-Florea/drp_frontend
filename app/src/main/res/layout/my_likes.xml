@@ -16,7 +16,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="#D9D9D9"
-        android:text="My Likes"
+        android:text="My Shared Wardrobe"
         android:textColor="#1F4B41"
         android:textColorLink="#D9D9D9"
         android:textSize="15sp"
@@ -42,7 +42,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="78dp"
         android:gravity="center"
-        android:text="My shared wardrobe"
+        android:text="My likes"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#1F4B41"
         android:textSize="24sp"
@@ -101,24 +101,9 @@
         android:id="@+id/imageView9"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="76dp"
         android:src="@drawable/button_grid"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_first"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
-
-    <ImageButton
-        android:id="@+id/button_first"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="86dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/streamlinehq_interface_add_circle_interface_essential_600"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
