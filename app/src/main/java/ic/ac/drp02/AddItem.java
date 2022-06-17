@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -135,7 +136,8 @@ public class AddItem extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photo);
+
+                //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photo);
 
                 try {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -150,11 +152,27 @@ public class AddItem extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             ImageView image  = binding.getRoot().findViewById(R.id.imageView2);
-            Bitmap bmImg = BitmapFactory.decodeFile(mCurrentPhotoPath);
+            //Bitmap bmImg = BitmapFactory.decodeFile(mCurrentPhotoPath);
 //
-//            Bundle extras = data.getExtras();
-//            imageBitmap = (Bitmap) extras.get("data");
-            image.setImageBitmap(bmImg);
+            Bundle extras = data.getExtras();
+            imageBitmap = (Bitmap) extras.get("data");
+            FileOutputStream fileOutputStream = null;
+            try {
+                fileOutputStream = new FileOutputStream(photo);
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (fileOutputStream != null) {
+                        fileOutputStream.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            image.setImageBitmap(imageBitmap);
 //
 //        }
 
