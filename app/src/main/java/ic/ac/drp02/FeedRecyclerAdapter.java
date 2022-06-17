@@ -62,6 +62,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         holder.description.setText(model.getDescription());
         holder.itemName.setText(model.getItemName());
         holder.itemType.setText(model.getItemType());
+        Log.e("adhithi", model.getImageUrl());
         Picasso.get().load(model.getImageUrl()).into(holder.image);
 
         //do we actually want to be able to click on a post and go to item details? don't think so

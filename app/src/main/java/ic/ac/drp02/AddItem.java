@@ -19,11 +19,16 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import ic.ac.drp02.databinding.AddItemBinding;
 import okhttp3.Call;
@@ -66,6 +71,7 @@ public class AddItem extends Fragment {
                 String nameToAdd = editDescription.getText().toString();
                 EditText editType = (EditText) binding.getRoot().findViewById(R.id.itemType);
                 String typeToAdd = editDescription.getText().toString();
+                String photoName = null;
 
 
                 try {
@@ -80,9 +86,9 @@ public class AddItem extends Fragment {
 //                            .url("https://drp02-backend.herokuapp.com/image/3")
 //                            .post(requestBody)
 //                            .build();
-
+                    photoName = photo.getName().split("\\.")[0];
                     Request request = new Request.Builder()
-                            .url("https://drp02-backend.herokuapp.com/image/" + photo.getName().split("\\.")[0])
+                            .url("https://drp02-backend.herokuapp.com/image/" + photoName)
                                     .post(RequestBody.create(MediaType.parse("image/jpeg"), photo))
                                     .build();
 
@@ -110,24 +116,28 @@ public class AddItem extends Fragment {
                 }
 
 
-                //do shit with image bitmap
-//                Request request = new Request.Builder()
-//                        .url("https://drp02-backend.herokuapp.com/insert/"+itemToAdd)
-//                        .build();
-//                Log.e("ahhh", "its an error");
-//                client.newCall(request).enqueue(new Callback() {
-//                    @Override
-//                    public void onFailure(Call call, IOException e) {
-//                        //List<String> results = Collections.emptyList();
-//                        e.printStackTrace();
-//                        Log.i("ahhh", "its an error");
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Call call, Response response) throws IOException {
-//                        Log.i("ahhh", response.body().string());
-//                    }
-//                });
+                NewWardrobeItem itemToAdd = new NewWardrobeItem(1, Arrays.asList("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photoName + ".jpeg"),descriptionToAdd, Collections.emptyList(), nameToAdd, typeToAdd,0 );
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                Gson gson = new Gson();
+
+                Request request = new Request.Builder()
+                        .url("https://drp02-backend.herokuapp.com/insert_item")
+                        .post(RequestBody.create(JSON, gson.toJson(itemToAdd)))
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        //List<String> results = Collections.emptyList();
+                        e.printStackTrace();
+                        Log.i("ahhh", "its an error");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.i("ahhh", response.body().string());
+                    }
+                });
                 getActivity().onBackPressed();
 
             }});

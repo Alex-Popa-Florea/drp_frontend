@@ -6,16 +6,18 @@ import java.util.List;
 public class WardrobeItem {
 
     private Integer id;
+    private Integer uid;
     private String imageUrl;
     private List<String> pics;
-    private String description;
     private List<String> tags;
+    private String description;
+
     private String name;
     private String type_;
     private Integer likes;
 
-    public WardrobeItem(Integer id, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
-        this.id = id;
+    public WardrobeItem(Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
+        this.uid = uid;
         this.pics = pics;
         this.imageUrl = pics.get(0);
         this.description = description;
@@ -38,7 +40,7 @@ public class WardrobeItem {
     }
 
     public String getImageUrl() {
-        return imageUrl;
+        return pics.get(0);
     }
 
     public String getItemName() {
