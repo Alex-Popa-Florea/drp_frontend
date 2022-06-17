@@ -53,5 +53,8 @@
         <action
             android:id="@+id/action_likesFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-    </fragment>
+        <action
+            android:id="@+id/action_likesFragment_to_itemDetails"
+            app:destination="@id/itemDetails" />
+    </fragment><action android:id="@+id/action_global_itemDetails" app:destination="@id/itemDetails"/>
 </navigation>

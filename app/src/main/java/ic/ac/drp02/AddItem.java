@@ -73,13 +73,18 @@ public class AddItem extends Fragment {
                     RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                             .addFormDataPart("file", photo.getName(),
                                     RequestBody.create(MediaType.parse("image/jpeg"), photo))
-                            .addFormDataPart("some-field", "some-value")
+
                             .build();
+                    Log.e("adhithi", photo.getName().split("\\.")[0]);
+//                    Request request = new Request.Builder()
+//                            .url("https://drp02-backend.herokuapp.com/image/3")
+//                            .post(requestBody)
+//                            .build();
 
                     Request request = new Request.Builder()
-                            .url("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photo.getName())
-                            .post(requestBody)
-                            .build();
+                            .url("https://drp02-backend.herokuapp.com/image/" + photo.getName().split("\\.")[0])
+                                    .post(RequestBody.create(MediaType.parse("image/jpeg"), photo))
+                                    .build();
 
                     client.newCall(request).enqueue(new Callback() {
 
@@ -93,7 +98,7 @@ public class AddItem extends Fragment {
                         @Override
                         public void onResponse(final Call call, final Response response) throws IOException {
                             if (!response.isSuccessful()) {
-                                Log.e("lskdgjlkd", "oh noo");
+                                Log.e("adhithi", response.body().string());
                             }
 
                         }
@@ -195,8 +200,8 @@ public class AddItem extends Fragment {
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String imageFileName = "JPEGo" + timeStamp + "o";
         File storageDir = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(

@@ -59,13 +59,13 @@ public class GridRecyclerAdapter extends RecyclerView.Adapter<GridRecyclerAdapte
                 Bundle bundle = new Bundle();
                 bundle.putString("image", wardrobeItems.get(position).getImageUrl());
                 bundle.putString("description", wardrobeItems.get(position).getDescription());
-
+                bundle.putString("numLikes", wardrobeItems.get(position).getLikes().toString());
                 bundle.putString("itemName", wardrobeItems.get(position).getItemName());
                 bundle.putString("itemType", wardrobeItems.get(position).getItemType());
 
-
-                NavHostFragment.findNavController(fragment)
-                        .navigate(R.id.action_profileFragment_to_itemDetails, bundle);
+                NavHostFragment.findNavController(fragment).navigate(R.id.action_global_itemDetails, bundle);
+//                NavHostFragment.findNavController(fragment)
+//                        .navigate(R.id.action_profileFragment_to_itemDetails, bundle);
             }
         });
     }

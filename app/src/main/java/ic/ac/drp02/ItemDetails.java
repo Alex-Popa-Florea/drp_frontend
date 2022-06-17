@@ -35,6 +35,7 @@ public class ItemDetails extends Fragment {
     TextView description;
     TextView itemName;
     TextView itemType;
+    TextView numLikes;
 
 
     @Override
@@ -55,6 +56,7 @@ public class ItemDetails extends Fragment {
         description = (TextView) binding.getRoot().findViewById(R.id.description);
         itemName = (TextView) binding.getRoot().findViewById(R.id.details_item_name);
         itemType = (TextView) binding.getRoot().findViewById(R.id.details_item_type);
+        numLikes = (TextView) binding.getRoot().findViewById(R.id.likesNumber);
 
 
         Bundle bundle = this.getArguments();
@@ -64,7 +66,10 @@ public class ItemDetails extends Fragment {
             description.setText(bundle.getString("description"));
             itemName.setText(bundle.getString("itemName"));
             itemType.setText(bundle.getString("itemType"));
+            numLikes.setText(bundle.getString("numLikes"));
         }
+
+
 
 
 

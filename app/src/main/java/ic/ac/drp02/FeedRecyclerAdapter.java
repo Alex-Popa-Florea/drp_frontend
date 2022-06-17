@@ -3,9 +3,11 @@ package ic.ac.drp02;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -34,6 +36,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     private ArrayList<WardrobeItem> wardrobeItems;
     Fragment fragment;
     PostLayoutBinding binding;
+    View view;
     private final OkHttpClient client = new OkHttpClient();
 
     // Constructor
@@ -48,7 +51,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     public FeedRecyclerAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // to inflate the layout for each item of recycler view.
         //binding = FeedBinding.inflate(inflater, container, false);
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
         return new Viewholder(view);
     }
 
@@ -80,7 +83,8 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
 //            }
 //        });
 
-        binding.likeButtonFeed.setOnClickListener(new View.OnClickListener() {
+        ImageButton likeButton = view.findViewById(R.id.likeButtonFeed);
+        likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Request request = new Request.Builder()
@@ -97,6 +101,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                     public void onResponse(Call call, Response response) throws IOException {
                     }
                 });
+                Log.e("adhithi", "hihihi");
             }
         });
     }
