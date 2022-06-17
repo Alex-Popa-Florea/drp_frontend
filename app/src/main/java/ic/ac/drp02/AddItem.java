@@ -68,9 +68,9 @@ public class AddItem extends Fragment {
                 EditText editDescription  = (EditText) binding.getRoot().findViewById(R.id.itemToAddDescription);
                 String descriptionToAdd = editDescription.getText().toString();
                 EditText editName = (EditText) binding.getRoot().findViewById(R.id.itemName);
-                String nameToAdd = editDescription.getText().toString();
+                String nameToAdd = editName.getText().toString();
                 EditText editType = (EditText) binding.getRoot().findViewById(R.id.itemType);
-                String typeToAdd = editDescription.getText().toString();
+                String typeToAdd = editType.getText().toString();
                 String photoName = null;
 
 
