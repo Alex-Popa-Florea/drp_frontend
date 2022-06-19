@@ -7,25 +7,6 @@
     android:backgroundTint="#009688"
     tools:context=".ProfileFragment">
 
-    <Button
-        android:id="@+id/my_likes_profile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="#D9D9D9"
-        android:text="My Likes"
-        android:textColor="#1F4B41"
-        android:textColorLink="#D9D9D9"
-        android:textSize="15sp"
-        app:cornerRadius="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
@@ -65,22 +46,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="78dp"
-        android:src="@drawable/button_grid"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="420dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="226dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="-5dp"
         android:src="@drawable/button_grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,5 +91,42 @@
         android:src="@drawable/streamlinehq_interface_add_circle_interface_essential_600"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7">
+
+        <Button
+            android:id="@+id/my_likes_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#D9D9D9"
+            android:text="My Likes"
+            android:textColor="#1F4B41"
+            android:textColorLink="#D9D9D9"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/my_likes_profile7" />
+
+        <Button
+            android:id="@+id/my_likes_profile7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#E9E9E9"
+            android:text="My Shared Wardrobe"
+            android:textColor="#85A49C"
+            android:textColorLink="#D9D9D9"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/my_likes_profile"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

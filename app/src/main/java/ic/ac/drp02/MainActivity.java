@@ -6,6 +6,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Log.e("adhithi", "lkfjklfj");
         setContentView(binding.getRoot());
 
+
         setSupportActionBar(binding.toolbar);
+        //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
 
         NavController navController = Navigation.findNavController(this, R.id.container);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();

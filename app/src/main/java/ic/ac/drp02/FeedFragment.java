@@ -45,6 +45,7 @@ public class FeedFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
+        //getActivity().setTitle("Hi");
         binding = FeedBinding.inflate(inflater, container, false);
 
         recyclerView = (RecyclerView) binding.getRoot().findViewById(R.id.feed_recycler);
@@ -65,6 +66,7 @@ public class FeedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 //        Log.e("adhithi", "lkfjklfj");
         super.onViewCreated(view, savedInstanceState);
+
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
         Log.e("adhithi", "bottomNavigationView.toString()");
 //        bottomNavigationView.setOnItemSelectedListener(item -> {
