@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/itemDetails"
         android:name="ic.ac.drp02.ItemDetails"
-        android:label="ItemDetails" >
+        android:label="Item Details" >
         <argument
             android:name="item"
             app:argType="string" />
@@ -16,11 +16,11 @@
     <fragment
         android:id="@+id/addItem"
         android:name="ic.ac.drp02.AddItem"
-        android:label="AddItem" />
+        android:label="Add Item" />
     <fragment
         android:id="@+id/feedFragment"
         android:name="ic.ac.drp02.FeedFragment"
-        android:label="FeedFragment" >
+        android:label="My Feed" >
         <action
             android:id="@+id/action_feedFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -31,8 +31,8 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="ic.ac.drp02.ProfileFragment"
-        android:label="profile"
-        tools:layout="@layout/profile" >
+        android:label="My Shared Wardrobe"
+        tools:layout="@layout/profile">
         <action
             android:id="@+id/action_profileFragment_to_itemDetails"
             app:destination="@id/itemDetails" />
@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/likesFragment"
         android:name="ic.ac.drp02.LikesFragment"
-        android:label="LikesFragment" >
+        android:label="My Likes">
         <action
             android:id="@+id/action_likesFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
