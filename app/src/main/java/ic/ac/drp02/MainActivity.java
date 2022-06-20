@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         Log.e("adhithi", "lkfjklfj");
         setContentView(binding.getRoot());
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         setSupportActionBar(binding.toolbar);
         //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         NavController navController = Navigation.findNavController(this, R.id.container);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
