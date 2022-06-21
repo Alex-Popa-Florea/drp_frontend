@@ -7,6 +7,30 @@
     android:backgroundTint="#009688"
     tools:context=".ProfileFragment">
 
+    <Button
+        android:id="@+id/uploadimage4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#D9D9D9"
+        android:text="0"
+        android:textColor="#1F4B41"
+        android:textColorLink="#D9D9D9"
+        android:textSize="12sp"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView19"
+        app:layout_constraintTop_toBottomOf="@+id/profile_user_name3" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:text="Friends"
+        app:layout_constraintStart_toEndOf="@+id/imageView19"
+        app:layout_constraintTop_toBottomOf="@+id/uploadimage4" />
+
     <ImageView
         android:id="@+id/imageView19"
         android:layout_width="50dp"
