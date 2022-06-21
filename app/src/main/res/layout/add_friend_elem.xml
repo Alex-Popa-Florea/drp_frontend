@@ -16,17 +16,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:layout_height="60dp">
 
             <TextView
                 android:id="@+id/add_friend_user_name"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="170dp"
                 android:text="User Name"
-                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/add_friend_user_icon"
@@ -35,21 +34,20 @@
             <TextView
                 android:id="@+id/add_friend_user_rating"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="300dp"
                 android:text="Stars"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/add_friend_user_icon"
                 app:layout_constraintTop_toBottomOf="@+id/add_friend_user_name" />
 
             <ImageButton
                 android:id="@+id/add_friend_user_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:background="@null"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,9 +64,9 @@
 
             <ImageButton
                 android:id="@+id/add_friend_add_button"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:background="@null"
                 android:scaleType="fitXY"
