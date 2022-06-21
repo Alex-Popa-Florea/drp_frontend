@@ -57,4 +57,12 @@
             android:id="@+id/action_likesFragment_to_itemDetails"
             app:destination="@id/itemDetails" />
     </fragment><action android:id="@+id/action_global_itemDetails" app:destination="@id/itemDetails"/>
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="ic.ac.drp02.DiscoverFragment"
+        android:label="Discover" /><action android:id="@+id/action_global_discoverFragment" app:destination="@id/discoverFragment"/>
+    <fragment
+        android:id="@+id/addFriend"
+        android:name="ic.ac.drp02.AddFriend"
+        android:label="AddFriend" /><action android:id="@+id/action_global_addFriend" app:destination="@id/addFriend"/>
 </navigation>
