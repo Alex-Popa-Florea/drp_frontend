@@ -14,8 +14,9 @@ public class NewWardrobeItem {
     private String name;
     private String type_;
     private Integer likes;
+    private String creation_time;
 
-    public NewWardrobeItem(Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
+    public NewWardrobeItem(Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes,String creation_time) {
         this.uid = uid;
         this.pics = pics;
         this.imageUrl = pics.get(0);
@@ -24,6 +25,7 @@ public class NewWardrobeItem {
         this.name = name;
         this.type_ = type_;
         this.likes = likes;
+        this.creation_time = creation_time;
     }
 
     public Integer getUid() {
