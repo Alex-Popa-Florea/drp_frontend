@@ -106,7 +106,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 }
 
                 Request request = new Request.Builder()
-                        .url("https://drp02-backend.herokuapp.com/like_item/" + wardrobeItems.get(position).getId().toString())
+                        .url("https://drp02-backend.herokuapp.com/likes/like/" + wardrobeItems.get(position).getId().toString())
 
                         .build();
                 //List<String> results = Collections.emptyList();.get()
@@ -123,6 +123,16 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 Log.e("adhithi", "hihihi");
             }
         });
+
+
+        ImageButton profileButton = view.findViewById(R.id.feed_profile_icon);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //bundle things to go to other profile screen but pass on wardrobe item class
+                NavHostFragment.findNavController(fragment)
+                        .navigate(R.id.action_feedFragment_to_otherProfileFragment);
+            }});
     }
 
     @Override

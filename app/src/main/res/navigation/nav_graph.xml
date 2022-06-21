@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_feedFragment_to_itemDetails"
             app:destination="@id/itemDetails" />
+        <action
+            android:id="@+id/action_feedFragment_to_otherProfileFragment"
+            app:destination="@id/otherProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -72,13 +75,25 @@
     <fragment
         android:id="@+id/otherProfileFragment"
         android:name="ic.ac.drp02.OtherProfileFragment"
-        android:label="User Profile" />
+        android:label="User Profile" >
+        <action
+            android:id="@+id/action_otherProfileFragment_to_otherUserLikesFragment"
+            app:destination="@id/otherUserLikesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myFriends"
         android:name="ic.ac.drp02.MyFriends"
         android:label="MyFriends" >
         <action
             android:id="@+id/action_myFriends_to_otherProfileFragment"
+            app:destination="@id/otherProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherUserLikesFragment"
+        android:name="ic.ac.drp02.OtherUserLikesFragment"
+        android:label="User's Likes" >
+        <action
+            android:id="@+id/action_otherUserLikesFragment_to_otherProfileFragment"
             app:destination="@id/otherProfileFragment" />
     </fragment>
 </navigation>
