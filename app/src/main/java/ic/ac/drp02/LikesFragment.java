@@ -143,13 +143,9 @@ public class LikesFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-//
-                //PUT JSON INTO CLASSES LIST HERE
-//
+
                 Gson gson = new Gson();
-//                for (String item : response.body().string().split("},")) {
-//                    Log.e("adhithi",item);
-//                }
+
 
                 Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
                 List<WardrobeItem> wardrobeItems = new Gson().fromJson(response.body().string(), listType);
@@ -162,9 +158,6 @@ public class LikesFragment extends Fragment {
                     }
                 }
 
-//                Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
-//                List<WardrobeItem> yourClassList = new Gson().fromJson(response.body().string(), listType);
-                //User user = gson.fromJson(,User.class);
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {

@@ -1,6 +1,7 @@
 package ic.ac.drp02;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,6 +30,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,6 +40,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     Fragment fragment;
     PostLayoutBinding binding;
     View view;
+    private Handler mHandler;
     private final OkHttpClient client = new OkHttpClient();
 
     // Constructor
@@ -52,6 +56,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         // to inflate the layout for each item of recycler view.
         //binding = FeedBinding.inflate(inflater, container, false);
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
+
         return new Viewholder(view);
     }
 
@@ -100,7 +105,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        //likeButton.setImageDrawable(put ur file name here);
+                        likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_6200);
                     }
                 });
                 Log.e("adhithi", "hihihi");
@@ -128,6 +133,39 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
             itemName = itemView.findViewById(R.id.item_name);
             itemType = itemView.findViewById(R.id.item_type);
         }
+    }
+
+    private void getWardrobe2(ListView listView) {
+        mHandler = new Handler(Looper.getMainLooper());
+        Request request = new Request.Builder()
+                .url("https://drp02-backend.herokuapp.com/wardrobe")
+
+                .build();
+        //List<String> results = Collections.emptyList();.get()
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                List<String> results = Collections.emptyList();
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+//
+                //PUT JSON INTO CLASSES LIST HERE
+                List<String> results = Arrays.asList(response.body().string().split(","));
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //        GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), wardrobeItems, this);
+                        //        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+                        //CustomAdapter listAdapter = new CustomAdapter(results);
+                        //listView.setAdapter(listAdapter);
+                    }
+                });
+            }
+        });
+
     }
 }
 

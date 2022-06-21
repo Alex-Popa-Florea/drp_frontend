@@ -6,25 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
-import ic.ac.drp02.databinding.AddFriendBinding;
 import ic.ac.drp02.databinding.PostLayoutBinding;
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.Viewholder>{
     private Context context;
@@ -79,6 +71,14 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
 //                Log.e("adhithi", "hihihi");
             }
         });
+
+        ImageButton profileButton = view.findViewById(R.id.add_friend_user_icon);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(fragment)
+                        .navigate(R.id.action_addFriend_to_otherProfileFragment);
+            }});
     }
 
     @Override

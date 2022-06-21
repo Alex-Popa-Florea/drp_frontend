@@ -64,5 +64,21 @@
     <fragment
         android:id="@+id/addFriend"
         android:name="ic.ac.drp02.AddFriend"
-        android:label="AddFriend" /><action android:id="@+id/action_global_addFriend" app:destination="@id/addFriend"/>
+        android:label="Add Friend" >
+        <action
+            android:id="@+id/action_addFriend_to_otherProfileFragment"
+            app:destination="@id/otherProfileFragment" />
+    </fragment><action android:id="@+id/action_global_addFriend" app:destination="@id/addFriend"/>
+    <fragment
+        android:id="@+id/otherProfileFragment"
+        android:name="ic.ac.drp02.OtherProfileFragment"
+        android:label="User Profile" />
+    <fragment
+        android:id="@+id/myFriends"
+        android:name="ic.ac.drp02.MyFriends"
+        android:label="MyFriends" >
+        <action
+            android:id="@+id/action_myFriends_to_otherProfileFragment"
+            app:destination="@id/otherProfileFragment" />
+    </fragment>
 </navigation>
