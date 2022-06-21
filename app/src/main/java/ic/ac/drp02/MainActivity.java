@@ -94,8 +94,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.home:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.container, feedFragment).commit();
                 navController.navigate(R.id.action_global_feedFragment);
+                return true;
+
+            case R.id.discover:
+                navController.navigate(R.id.action_global_discoverFragment);
+                return true;
+
+            case R.id.addFriends:
+                navController.navigate(R.id.action_global_addFriend);
                 return true;
 
         }

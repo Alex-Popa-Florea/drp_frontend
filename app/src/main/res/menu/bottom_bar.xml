@@ -9,6 +9,16 @@
         android:icon="@drawable/streamlinehq_interface_home_3_interface_essential_600"/>
 
     <item
+        android:id="@+id/discover"
+        android:title="Discover"
+        android:icon="@drawable/streamlinehq_interface_search_interface_essential_600"/>
+
+    <item
+        android:id="@+id/addFriends"
+        android:title="Add Friends"
+        android:icon="@drawable/streamlinehq_interface_user_add_interface_essential_600"/>
+
+    <item
         android:id="@+id/profile"
         android:title="Profile"
         android:icon="@drawable/streamlinehq_interface_user_circle_interface_essential_600"/>

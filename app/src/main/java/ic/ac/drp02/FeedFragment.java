@@ -53,10 +53,6 @@ public class FeedFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        //WardrobeItem item1 = new WardrobeItem("https://drpbucket.s3.eu-west-2.amazonaws.com/Screenshot+(1).png", "Blue jumper", Arrays.asList("woolen", "blue"), "itemName", "itemType");
-        //WardrobeItem item2 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"), "itemName", "itemType");
-        //WardrobeItem item3 = new WardrobeItem("https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fba%2F9d%2Fba9d9c48e4847ae9e18b3ed23d10878f6c758e38.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]", "Blue jeans", Arrays.asList("jeans", "lightwash"), "itemName", "itemType");
-        //ArrayList<WardrobeItem> wardrobeItems = new ArrayList<>(Arrays.asList(item1, item2, item3));
         getWardrobe();
 
 
@@ -66,19 +62,7 @@ public class FeedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 //        Log.e("adhithi", "lkfjklfj");
         super.onViewCreated(view, savedInstanceState);
-
-        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
-        Log.e("adhithi", "bottomNavigationView.toString()");
-//        bottomNavigationView.setOnItemSelectedListener(item -> {
-//            if (item.getItemId() == R.id.profile) {
-//                NavHostFragment.findNavController(FeedFragment.this)
-//                        .navigate(R.id.action_feedFragment_to_profileFragment);
-//                bottomNavigationView.setSelectedItemId(R.id.profile);
-//                return true;
-//            }
-//            return false;
-//        });
-
+        
     }
 
     @Override
