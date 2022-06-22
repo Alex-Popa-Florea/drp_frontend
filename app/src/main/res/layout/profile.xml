@@ -8,7 +8,7 @@
     tools:context=".ProfileFragment">
 
     <Button
-        android:id="@+id/uploadimage2"
+        android:id="@+id/my_friends_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="130dp"
@@ -29,7 +29,7 @@
         android:layout_marginStart="130dp"
         android:text="Friends"
         app:layout_constraintStart_toEndOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/uploadimage2" />
+        app:layout_constraintTop_toBottomOf="@+id/my_friends_button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

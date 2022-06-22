@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/button_grid" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/add_friend_recycler"
+        android:id="@+id/my_friend_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView8"

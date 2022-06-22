@@ -79,6 +79,13 @@ public class OtherProfileFragment extends Fragment {
             }
         });
 
+        binding.addFriendsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(OtherProfileFragment.this)
+                        .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment);
+            }
+        });
 
     }
 

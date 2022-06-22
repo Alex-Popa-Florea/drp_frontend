@@ -85,6 +85,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        binding.myFriendsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ProfileFragment.this)
+                        .navigate(R.id.action_profileFragment_to_myFriends);
+            }
+        });
+
 //        BottomNavigationView bottomNavigationView = binding.getRoot().findViewById(R.id.bottomNavigationView);
 //        bottomNavigationView.setOnItemSelectedListener(item -> {
 //            if (item.getItemId() == R.id.home) {

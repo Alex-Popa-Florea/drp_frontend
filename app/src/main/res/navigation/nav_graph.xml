@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_profileFragment_to_likesFragment"
             app:destination="@id/likesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myFriends"
+            app:destination="@id/myFriends" />
     </fragment><action android:id="@+id/action_global_feedFragment" app:destination="@id/feedFragment"/><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
     <fragment
         android:id="@+id/likesFragment"
