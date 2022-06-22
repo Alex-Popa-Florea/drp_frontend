@@ -42,7 +42,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/likeButtonFeed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+                app:layout_constraintTop_toBottomOf="@+id/feed_profile_icon"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageButton
@@ -94,7 +94,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                app:layout_constraintStart_toEndOf="@+id/feed_profile_icon"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -120,7 +120,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                app:layout_constraintStart_toEndOf="@+id/feed_profile_icon"
                 app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
             <TextView
@@ -135,7 +135,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/feed_profile_icon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"

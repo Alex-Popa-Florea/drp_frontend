@@ -1,4 +1,6 @@
 package ic.ac.drp02;
 
-public class OtherUserLikesFragment {
+import androidx.fragment.app.Fragment;
+
+public class OtherUserLikesFragment extends Fragment {
 }
