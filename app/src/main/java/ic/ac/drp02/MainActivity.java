@@ -1,11 +1,13 @@
 package ic.ac.drp02;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,10 +18,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import ic.ac.drp02.analytics.TimeToLike;
 import ic.ac.drp02.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.time.LocalDateTime;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -30,9 +35,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     ProfileFragment profileFragment = new ProfileFragment();
     FeedFragment feedFragment = new FeedFragment();
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+            TimeToLike timeToLike = TimeToLike.getInstance();
+            timeToLike.setAppStartTime(LocalDateTime.now());
+
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         Log.e("adhithi", "lkfjklfj");

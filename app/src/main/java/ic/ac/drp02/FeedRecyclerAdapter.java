@@ -1,7 +1,9 @@
 package ic.ac.drp02;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -13,10 +15,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ic.ac.drp02.analytics.TimeToLike;
 import ic.ac.drp02.databinding.FeedBinding;
 import ic.ac.drp02.databinding.PostLayoutBinding;
 import okhttp3.Call;
@@ -29,6 +33,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -61,7 +66,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeedRecyclerAdapter.Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull FeedRecyclerAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
         // to set data to textview and imageview of each card layout SORT THIS SHIT OUT
         WardrobeItem model = wardrobeItems.get(position);
         holder.description.setText(model.getDescription());
@@ -91,8 +96,15 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
 
         ImageButton likeButton = view.findViewById(R.id.likeButtonFeed);
         likeButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                TimeToLike timeToLike = TimeToLike.getInstance();
+                if (!timeToLike.getFirstLike()){
+                    timeToLike.setFirstLike(true);
+                    timeToLike.setFirstLikeTime(LocalDateTime.now());
+                }
+
                 Request request = new Request.Builder()
                         .url("https://drp02-backend.herokuapp.com/like_item/" + wardrobeItems.get(position).getId().toString())
 
