@@ -62,6 +62,8 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         //binding = FeedBinding.inflate(inflater, container, false);
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout, parent, false);
 
+
+
         return new Viewholder(view);
     }
 
@@ -74,6 +76,11 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         holder.itemType.setText(model.getItemType());
         Log.e("adhithi", model.getImageUrl());
         Picasso.get().load(model.getImageUrl()).into(holder.image);
+        ImageButton likeButton = view.findViewById(R.id.likeButtonFeed);
+        if (wardrobeItems.get(position).getLikes() > 0) { //CHANGE THIS SO ITS IF USER HAS LIKED
+            likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_6200);
+
+        }
 
         //do we actually want to be able to click on a post and go to item details? don't think so
         //cos if we did, we'd have to make a seperate screen that includes profiles
@@ -94,7 +101,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
 //            }
 //        });
 
-        ImageButton likeButton = view.findViewById(R.id.likeButtonFeed);
+
         likeButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -105,10 +112,22 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                     timeToLike.setFirstLikeTime(LocalDateTime.now());
                 }
 
-                Request request = new Request.Builder()
-                        .url("https://drp02-backend.herokuapp.com/likes/like/" + wardrobeItems.get(position).getId().toString())
+                boolean likedBefore = wardrobeItems.get(position).getLikes() > 0;
+                Request request;
 
-                        .build();
+                if (likedBefore) {
+                    request = new Request.Builder()
+                            .url("https://drp02-backend.herokuapp.com/likes/dislike/" + wardrobeItems.get(position).getId().toString())
+
+                            .build();
+                }
+
+                else {
+                    request = new Request.Builder()
+                            .url("https://drp02-backend.herokuapp.com/likes/like/" + wardrobeItems.get(position).getId().toString())
+
+                            .build();
+                }
                 //List<String> results = Collections.emptyList();.get()
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -117,10 +136,16 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_6200);
+                        if (likedBefore) {
+                            likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_600__1_);
+
+                        }
+                        else {
+                            likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_6200);
+
+                        }
                     }
                 });
-                Log.e("adhithi", "hihihi");
             }
         });
 

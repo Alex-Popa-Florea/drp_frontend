@@ -163,7 +163,7 @@ public class LikesFragment extends Fragment {
                     public void run() {
                                 GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(likedItems), fragment);
                                 recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-                                Log.e("adhithi",wardrobeItems.toString());
+
 
 
                     }
