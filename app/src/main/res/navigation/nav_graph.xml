@@ -91,5 +91,9 @@
     <fragment
         android:id="@+id/otherUserLikesFragment"
         android:name="ic.ac.drp02.OtherUserLikesFragment"
-        android:label="OtherUserLikesFragment" />
+        android:label="User's Likes" >
+        <action
+            android:id="@+id/action_otherUserLikesFragment_to_otherProfileFragment"
+            app:destination="@id/otherProfileFragment" />
+    </fragment>
 </navigation>
