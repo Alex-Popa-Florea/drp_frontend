@@ -27,9 +27,13 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import com.squareup.picasso.Picasso;
+
+import org.riversun.okhttp3.OkHttp3CookieHelper;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -46,7 +50,8 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     PostLayoutBinding binding;
     View view;
     private Handler mHandler;
-    private final OkHttpClient client = new OkHttpClient();
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
 
     // Constructor
     public FeedRecyclerAdapter(Context context, ArrayList<WardrobeItem> wardrobeItems, Fragment fragment) {
@@ -112,30 +117,33 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                     timeToLike.setFirstLikeTime(LocalDateTime.now());
                 }
 
-                boolean likedBefore = wardrobeItems.get(position).getLikes() > 0;
+                boolean likedBefore = false; //wardrobeItems.get(position).getLikes() > 0;
                 Request request;
+                String url;
 
                 if (likedBefore) {
-                    request = new Request.Builder()
-                            .url("https://drp02-backend.herokuapp.com/likes/dislike/" + wardrobeItems.get(position).getId().toString())
-
-                            .build();
+                    url = "https://drp02-backend.herokuapp.com/likes/dislike/" + wardrobeItems.get(position).getId().toString();
                 }
-
                 else {
-                    request = new Request.Builder()
-                            .url("https://drp02-backend.herokuapp.com/likes/like/" + wardrobeItems.get(position).getId().toString())
-
-                            .build();
+                    url = "https://drp02-backend.herokuapp.com/likes/like/" + wardrobeItems.get(position).getId().toString();
                 }
+
+                request = new Request.Builder()
+                        .url(url)
+                        .post(RequestBody.create(null, new byte[0]))
+                        .build();
+                cookieHelper.setCookie(url,"uid",User.getUid());
+
                 //List<String> results = Collections.emptyList();.get()
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
+                        Log.e("thaarukanisannoying", "failed "+User.getUid().toString());
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
+                        Log.e("thaarukanisannoying", User.getUid());
                         if (likedBefore) {
                             likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_600__1_);
 
