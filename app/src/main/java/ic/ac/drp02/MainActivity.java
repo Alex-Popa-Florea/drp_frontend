@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        Log.e("adhithi", "lkfjklfj");
+        //Log.e("adhithi", "lkfjklfj");
         setContentView(binding.getRoot());
 
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        //bottomNavigationView.setSelectedItemId(R.id.home);
 
 
     }
