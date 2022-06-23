@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feedFragment">
+    app:startDestination="@id/loginAccount">
 
     <fragment
         android:id="@+id/itemDetails"
@@ -98,5 +98,24 @@
         <action
             android:id="@+id/action_otherUserLikesFragment_to_otherProfileFragment"
             app:destination="@id/otherProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginAccount"
+        android:name="ic.ac.drp02.LoginAccount"
+        android:label="LoginAccount" >
+        <action
+            android:id="@+id/action_loginAccount_to_feedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_loginAccount_to_signupAccount"
+            app:destination="@id/signupAccount" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupAccount"
+        android:name="ic.ac.drp02.SignupAccount"
+        android:label="SignupAccount" >
+        <action
+            android:id="@+id/action_signupAccount_to_feedFragment"
+            app:destination="@id/feedFragment" />
     </fragment>
 </navigation>
