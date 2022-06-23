@@ -35,7 +35,7 @@ public class LoginAccount extends Fragment {
             @Override
             public void onClick(View view) {
 
-                EditText editUsername  = (EditText) binding.getRoot().findViewById(R.id.username_text_input);
+                EditText editUsername  = (EditText) binding.getRoot().findViewById(R.id.login_email_text_input);
                 String username = editUsername.getText().toString();
                 EditText editPassword  = (EditText) binding.getRoot().findViewById(R.id.password_text_input);
                 String password = editPassword.getText().toString();
