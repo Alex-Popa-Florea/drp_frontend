@@ -74,8 +74,7 @@ public class FeedFragment extends Fragment {
     private void getWardrobe() {
         mHandler = new Handler(Looper.getMainLooper());
         Request request = new Request.Builder()
-                .url("https://drp02-backend.herokuapp.com/wardrobe")
-
+                .url("https://drp02-backend.herokuapp.com/my_wardrobe")
                 .build();
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
