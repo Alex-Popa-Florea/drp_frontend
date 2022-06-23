@@ -5,7 +5,6 @@ import java.util.List;
 public class NewWardrobeItem {
 
 
-    private Integer uid;
     private String imageUrl;
     private List<String> pics;
     private List<String> tags;
@@ -16,8 +15,7 @@ public class NewWardrobeItem {
     private Integer likes;
     private String creation_time;
 
-    public NewWardrobeItem(Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes,String creation_time) {
-        this.uid = uid;
+    public NewWardrobeItem(List<String> pics, String description, List<String> tags, String name, String type_, Integer likes,String creation_time) {
         this.pics = pics;
         this.imageUrl = pics.get(0);
         this.description = description;
@@ -26,10 +24,6 @@ public class NewWardrobeItem {
         this.type_ = type_;
         this.likes = likes;
         this.creation_time = creation_time;
-    }
-
-    public Integer getUid() {
-        return uid;
     }
 
     public String getDescription() {

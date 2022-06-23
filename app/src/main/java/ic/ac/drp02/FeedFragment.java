@@ -76,7 +76,7 @@ public class FeedFragment extends Fragment {
 
     private void getWardrobe() {
         mHandler = new Handler(Looper.getMainLooper());
-        String url = "https://drp02-backend.herokuapp.com/my_feed";
+        String url = "https://drp02-backend.herokuapp.com/items/feed";
         Request request = new Request.Builder()
                 .url(url)
                 .build();

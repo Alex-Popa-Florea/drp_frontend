@@ -2,6 +2,8 @@ package ic.ac.drp02;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ import java.io.IOException;
 public class SignupAccount extends Fragment {
 
     private SignupScreenBinding binding;
+    private Handler mHandler;
 
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -93,12 +96,19 @@ public class SignupAccount extends Fragment {
                             String uid = responseHeaders.values("Set-Cookie").get(0).split(";")[0].split("=")[1];
                             User.setUid(uid);
 
+                            mHandler = new Handler(Looper.getMainLooper());
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    NavHostFragment.findNavController(SignupAccount.this)
+                                            .navigate(R.id.action_signupAccount_to_feedFragment);
+                                }
+                            });
+
                         }
                     }
                 });
 
-                NavHostFragment.findNavController(SignupAccount.this)
-                        .navigate(R.id.action_signupAccount_to_feedFragment);
             }
         });
 

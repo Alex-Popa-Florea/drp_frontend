@@ -23,6 +23,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,7 +49,9 @@ import okhttp3.Response;
 public class AddItem extends Fragment {
 
     private AddItemBinding binding;
-    private final OkHttpClient client = new OkHttpClient();
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Bitmap imageBitmap;
     File photo;
@@ -123,12 +127,13 @@ public class AddItem extends Fragment {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); //maybe refactor?
                 String timeStamp  = dtf.format(LocalDateTime.now());
                 timeStamp = timeStamp.replace(" ","T");
-                NewWardrobeItem itemToAdd = new NewWardrobeItem(1, Arrays.asList("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photoName + ".jpeg"),descriptionToAdd, Collections.emptyList(), nameToAdd, typeToAdd,0, timeStamp);
+                NewWardrobeItem itemToAdd = new NewWardrobeItem(Arrays.asList("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photoName + ".jpeg"),descriptionToAdd, Collections.emptyList(), nameToAdd, typeToAdd,0, timeStamp);
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 Gson gson = new Gson();
-
+                String url = "https://drp02-backend.herokuapp.com/items/insert_item";
+                cookieHelper.setCookie(url,"uid",User.getUid());
                 Request request = new Request.Builder()
-                        .url("https://drp02-backend.herokuapp.com/insert_item")
+                        .url(url)
                         .post(RequestBody.create(JSON, gson.toJson(itemToAdd)))
                         .build();
 

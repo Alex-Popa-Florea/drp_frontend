@@ -194,7 +194,6 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         mHandler = new Handler(Looper.getMainLooper());
         Request request = new Request.Builder()
                 .url("https://drp02-backend.herokuapp.com/wardrobe")
-
                 .build();
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
