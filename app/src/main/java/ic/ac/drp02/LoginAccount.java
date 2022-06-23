@@ -1,6 +1,5 @@
 package ic.ac.drp02;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -81,8 +78,8 @@ public class LoginAccount extends Fragment {
                             Headers responseHeaders = response.headers();
                             String uid = responseHeaders.values("Set-Cookie").get(0).split(";")[0].split("=")[1];
                             Log.e("Thaarukan",uid);
-                            User.setUid(uid);
-                            Log.e("Thaarukan",User.getUid());
+                            StaticUser.setUid(uid);
+                            Log.e("Thaarukan", StaticUser.getUid());
 
                             mHandler = new Handler(Looper.getMainLooper());
                             mHandler.post(new Runnable() {

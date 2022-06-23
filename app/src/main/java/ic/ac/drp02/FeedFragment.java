@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -23,7 +21,6 @@ import org.riversun.okhttp3.OkHttp3CookieHelper;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -80,8 +77,8 @@ public class FeedFragment extends Fragment {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        Log.e("Thaarukan",User.getUid());
-        cookieHelper.setCookie(url,"uid",User.getUid());
+        Log.e("Thaarukan", StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid", StaticUser.getUid());
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override

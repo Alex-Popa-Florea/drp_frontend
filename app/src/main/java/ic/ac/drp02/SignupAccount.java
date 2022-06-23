@@ -1,6 +1,5 @@
 package ic.ac.drp02;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +15,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.gson.Gson;
 
-import ic.ac.drp02.databinding.LoginScreenBinding;
 import ic.ac.drp02.databinding.SignupScreenBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,8 +25,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-
-import org.riversun.okhttp3.OkHttp3CookieHelper;
 
 import java.io.IOException;
 
@@ -92,9 +86,9 @@ public class SignupAccount extends Fragment {
                             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
                             Headers responseHeaders = response.headers();
-                            User user = User.getInstance();
+                            StaticUser staticUser = StaticUser.getInstance();
                             String uid = responseHeaders.values("Set-Cookie").get(0).split(";")[0].split("=")[1];
-                            User.setUid(uid);
+                            StaticUser.setUid(uid);
 
                             mHandler = new Handler(Looper.getMainLooper());
                             mHandler.post(new Runnable() {

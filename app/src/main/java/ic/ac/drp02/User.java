@@ -1,26 +1,27 @@
 package ic.ac.drp02;
 
-import ic.ac.drp02.analytics.TimeToLike;
+import java.util.List;
 
 public class User {
+    private final int uid;
+    private final String name;
+    private final String email;
+    private final List<Integer> items_liked;
+    private final List<Integer> users_following;
 
-    private static User user;
-    private static String uid;
-
-    private User(){}
-
-    public static User getInstance(){
-        if(user == null) {
-            user = new User();
-        }
-        return user;
+    public User(int uid,String name,String email,List<Integer> items_liked,List<Integer> users_following){
+        this.uid = uid;
+        this.name = name;
+        this.email = email;
+        this.items_liked = items_liked;
+        this.users_following = users_following;
     }
 
-    public static String getUid() {
-        return uid;
+    public List<Integer> getUsers_following() {
+        return users_following;
     }
 
-    public static void setUid(String uid) {
-        User.uid = uid;
+    public List<Integer> getItems_liked() {
+        return items_liked;
     }
 }

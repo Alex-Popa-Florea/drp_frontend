@@ -4,8 +4,6 @@ import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,7 +32,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 import ic.ac.drp02.databinding.AddItemBinding;
 import okhttp3.Call;
@@ -131,7 +128,7 @@ public class AddItem extends Fragment {
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 Gson gson = new Gson();
                 String url = "https://drp02-backend.herokuapp.com/items/insert_item";
-                cookieHelper.setCookie(url,"uid",User.getUid());
+                cookieHelper.setCookie(url,"uid", StaticUser.getUid());
                 Request request = new Request.Builder()
                         .url(url)
                         .post(RequestBody.create(JSON, gson.toJson(itemToAdd)))
