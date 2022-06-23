@@ -18,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -37,7 +39,8 @@ public class FeedFragment extends Fragment {
     private FeedBinding binding;
     private RecyclerView recyclerView;
     private Handler mHandler;
-    private final OkHttpClient client = new OkHttpClient();
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
     private Fragment fragment = this;
 
     public View onCreateView(
@@ -73,9 +76,12 @@ public class FeedFragment extends Fragment {
 
     private void getWardrobe() {
         mHandler = new Handler(Looper.getMainLooper());
+        String url = "https://drp02-backend.herokuapp.com/my_feed";
         Request request = new Request.Builder()
-                .url("https://drp02-backend.herokuapp.com/my_wardrobe")
+                .url(url)
                 .build();
+        Log.e("Thaarukan",User.getUid());
+        cookieHelper.setCookie(url,"uid",User.getUid());
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override

@@ -2,6 +2,8 @@ package ic.ac.drp02;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import okhttp3.ResponseBody;
 public class LoginAccount extends Fragment {
 
     private LoginScreenBinding binding;
+    private Handler mHandler;
 
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -64,7 +67,7 @@ public class LoginAccount extends Fragment {
                         .post(RequestBody.create(JSON, gson.toJson(loginData)))
                         .build();
                 OkHttpClient client = new OkHttpClient();
-
+                Log.e("Thaarukan","heree");
                 client.newCall(request).enqueue(new Callback() {
                     @Override public void onFailure(Call call, IOException e) {
                         Log.e("thaarukanisannoying", "User.getUid()");
@@ -77,13 +80,24 @@ public class LoginAccount extends Fragment {
 
                             Headers responseHeaders = response.headers();
                             String uid = responseHeaders.values("Set-Cookie").get(0).split(";")[0].split("=")[1];
+                            Log.e("Thaarukan",uid);
                             User.setUid(uid);
+                            Log.e("Thaarukan",User.getUid());
+
+                            mHandler = new Handler(Looper.getMainLooper());
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    NavHostFragment.findNavController(LoginAccount.this)
+                                            .navigate(R.id.action_loginAccount_to_feedFragment);
+                                }
+                            });
+
                         }
                     }
-                });
 
-                NavHostFragment.findNavController(LoginAccount.this)
-                        .navigate(R.id.action_loginAccount_to_feedFragment);
+
+                });
             }
         });
 
