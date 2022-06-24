@@ -48,6 +48,7 @@ public class ProfileFragment extends Fragment {
     private Handler mHandler;
     private RecyclerView recyclerView;
     private Fragment fragment = this;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,

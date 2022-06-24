@@ -1,5 +1,6 @@
 package ic.ac.drp02;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 
 import ic.ac.drp02.databinding.OtherProfileBinding;
@@ -71,6 +75,7 @@ public class OtherProfileFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Bundle bundle = fragment.getArguments();
         String name = bundle.getString("username");
         int uid = bundle.getInt("uid");
@@ -191,7 +196,6 @@ public class OtherProfileFragment extends Fragment {
         });
 
     }
-
 
 }
 

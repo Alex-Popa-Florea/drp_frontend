@@ -111,6 +111,9 @@ public class ItemDetails extends Fragment {
                     }
                 });
 
+                NavHostFragment.findNavController(ItemDetails.this)
+                        .navigate(R.id.action_itemDetails_to_profileFragment);
+
             }});
 
 

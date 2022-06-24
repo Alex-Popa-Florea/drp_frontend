@@ -8,7 +8,7 @@
     tools:context=".ProfileFragment">
 
     <Button
-        android:id="@+id/uploadimage4"
+        android:id="@+id/my_friends_button_likes"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="130dp"
@@ -29,7 +29,7 @@
         android:layout_marginStart="130dp"
         android:text="Friends"
         app:layout_constraintStart_toEndOf="@+id/imageView19"
-        app:layout_constraintTop_toBottomOf="@+id/uploadimage4" />
+        app:layout_constraintTop_toBottomOf="@+id/my_friends_button_likes" />
 
     <ImageView
         android:id="@+id/imageView19"

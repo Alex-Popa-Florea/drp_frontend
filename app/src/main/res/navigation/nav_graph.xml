@@ -12,6 +12,9 @@
         <argument
             android:name="item"
             app:argType="string" />
+        <action
+            android:id="@+id/action_itemDetails_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addItem"
@@ -62,6 +65,9 @@
         <action
             android:id="@+id/action_likesFragment_to_itemDetails"
             app:destination="@id/itemDetails" />
+        <action
+            android:id="@+id/action_likesFragment_to_myFriends"
+            app:destination="@id/myFriends" />
     </fragment><action android:id="@+id/action_global_itemDetails" app:destination="@id/itemDetails"/>
     <fragment
         android:id="@+id/discoverFragment"

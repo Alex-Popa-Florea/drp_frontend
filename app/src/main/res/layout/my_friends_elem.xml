@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="75dp">
 
             <TextView
                 android:id="@+id/my_friend_user_name"
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="300dp"
+                android:layout_marginEnd="290dp"
                 android:text="Stars"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/my_friend_user_icon"
@@ -47,7 +47,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="10dp"
                 android:background="@null"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="-10dp"
+                android:layout_marginTop="-10dp"
                 android:layout_marginEnd="-10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
