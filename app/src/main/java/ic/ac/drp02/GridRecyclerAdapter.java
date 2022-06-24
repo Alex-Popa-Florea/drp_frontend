@@ -62,6 +62,7 @@ public class GridRecyclerAdapter extends RecyclerView.Adapter<GridRecyclerAdapte
                 bundle.putString("numLikes", wardrobeItems.get(position).getLikes().toString());
                 bundle.putString("itemName", wardrobeItems.get(position).getItemName());
                 bundle.putString("itemType", wardrobeItems.get(position).getItemType());
+                bundle.putInt("id", wardrobeItems.get(position).getId());
 
                 NavHostFragment.findNavController(fragment).navigate(R.id.action_global_itemDetails, bundle);
 //                NavHostFragment.findNavController(fragment)
