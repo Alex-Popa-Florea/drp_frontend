@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -36,7 +38,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class OtherProfileFragment extends Fragment {
-    private final OkHttpClient client = new OkHttpClient();
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
     private OtherProfileBinding binding;
     private Handler mHandler;
     private RecyclerView recyclerView;
@@ -100,10 +103,13 @@ public class OtherProfileFragment extends Fragment {
     private void getWardrobe() {
         //replace this to get the other user's wardrobe
         mHandler = new Handler(Looper.getMainLooper());
+        Bundle bundle = this.getArguments();
+        String url = "https://drp02-backend.herokuapp.com/items/see_wardrobe/"+ bundle.getInt("uid");
         Request request = new Request.Builder()
-                .url("https://drp02-backend.herokuapp.com/wardrobe")
+                .url(url)
 
                 .build();
+        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override

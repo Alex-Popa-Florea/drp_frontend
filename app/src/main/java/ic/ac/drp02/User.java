@@ -24,4 +24,10 @@ public class User {
     public List<Integer> getItems_liked() {
         return items_liked;
     }
+
+    public Integer getUid() {return uid;}
+
+    public String getName() {
+        return name;
+    }
 }

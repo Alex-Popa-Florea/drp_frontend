@@ -1,6 +1,7 @@
 package ic.ac.drp02;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +21,14 @@ import okhttp3.OkHttpClient;
 
 public class MyFriendsAdapter extends RecyclerView.Adapter<MyFriendsAdapter.Viewholder>{
     private Context context;
-    private ArrayList<Friend> friends;
+    private ArrayList<User> friends;
     Fragment fragment;
     MyFriendsElemBinding binding;
     View view;
     private final OkHttpClient client = new OkHttpClient();
 
     // Constructor
-    public MyFriendsAdapter(Context context, ArrayList<Friend> friends, Fragment fragment) {
+    public MyFriendsAdapter(Context context, ArrayList<User> friends, Fragment fragment) {
         this.context = context;
         this.friends = friends;
         this.fragment = fragment;
@@ -44,17 +45,22 @@ public class MyFriendsAdapter extends RecyclerView.Adapter<MyFriendsAdapter.View
     @Override
     public void onBindViewHolder(@NonNull MyFriendsAdapter.Viewholder holder, int position) {
         // to set data to textview and imageview of each card layout SORT THIS SHIT OUT
-        Friend model = friends.get(position);
-        holder.rating.setText(model.getRating());
+        User model = friends.get(position);
         holder.name.setText(model.getName());
 
         ImageButton profileButton = view.findViewById(R.id.my_friend_user_icon);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //display other users profile
+                //might need to send uid with a bundle
+                // ill do that bit
+                Bundle bundle = new Bundle();
+                bundle.putInt("uid", model.getUid());
                 NavHostFragment.findNavController(fragment)
-                        .navigate(R.id.action_myFriends_to_otherProfileFragment);
+                        .navigate(R.id.action_myFriends_to_otherProfileFragment, bundle);
             }});
+
     }
 
     @Override

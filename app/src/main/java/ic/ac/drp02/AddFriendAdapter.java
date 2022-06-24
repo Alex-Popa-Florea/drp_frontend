@@ -1,5 +1,6 @@
 package ic.ac.drp02;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,21 +14,31 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import ic.ac.drp02.databinding.PostLayoutBinding;
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.Viewholder>{
     private Context context;
-    private ArrayList<Friend> friendsToAdd;
+    private ArrayList<User> friendsToAdd;
     Fragment fragment;
     PostLayoutBinding binding;
     View view;
-    private final OkHttpClient client = new OkHttpClient();
+
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
 
     // Constructor
-    public AddFriendAdapter(Context context, ArrayList<Friend> friendsToAdd, Fragment fragment) {
+    public AddFriendAdapter(Context context, ArrayList<User> friendsToAdd, Fragment fragment) {
         this.context = context;
         this.friendsToAdd = friendsToAdd;
         this.fragment = fragment;
@@ -42,33 +53,34 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AddFriendAdapter.Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull AddFriendAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
         // to set data to textview and imageview of each card layout SORT THIS SHIT OUT
-        Friend model = friendsToAdd.get(position);
+        User model = friendsToAdd.get(position);
         Log.i("thaarukan",holder.rating.toString());
-        holder.rating.setText(model.getRating());
         holder.name.setText(model.getName());
 
         ImageButton addButton = view.findViewById(R.id.add_friend_add_button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Request request = new Request.Builder()
-//                        .url("https://drp02-backend.herokuapp.com/like_item/" + friendsToAdd.get(position).getId().toString())
-//
-//                        .build();
-//                //List<String> results = Collections.emptyList();.get()
-//                client.newCall(request).enqueue(new Callback() {
-//                    @Override
-//                    public void onFailure(Call call, IOException e) {
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Call call, Response response) throws IOException {
-//                        //likeButton.setImageDrawable(put ur file name here);
-//                    }
-//                });
-//                Log.e("adhithi", "hihihi");
+                String url =  "https://drp02-backend.herokuapp.com/user/follow/" + friendsToAdd.get(position).getUid().toString();
+                Request request = new Request.Builder()
+                        .url(url)
+                        .post(RequestBody.create(null,new byte[0]))
+                        .build();
+                cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+                //List<String> results = Collections.emptyList();.get()
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        //Log.e("adhithi", )
+                    }
+                });
+                Log.e("adhithi", "hihihi");
             }
         });
 

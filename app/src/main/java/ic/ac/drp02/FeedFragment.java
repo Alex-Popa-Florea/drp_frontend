@@ -73,7 +73,7 @@ public class FeedFragment extends Fragment {
     }
 
     private void getWardrobe() {
-        String url = "https://drp02-backend.herokuapp.com/items/discover";
+        String url = "https://drp02-backend.herokuapp.com/items/feed";
         Request request = new Request.Builder()
                 .url(url)
                 .build();
