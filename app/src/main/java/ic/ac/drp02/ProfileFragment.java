@@ -1,5 +1,6 @@
 package ic.ac.drp02;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -68,11 +72,17 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         TextView username = binding.getRoot().findViewById(R.id.profile_user_name);
-        username.setText("Jason");
+        try {
+            username.setText(getUsername().get());
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,6 +237,41 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private CompletableFuture<String> getUsername() {
+        String url = "https://drp02-backend.herokuapp.com/user/get_user";
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        CompletableFuture<String> result = new CompletableFuture<>();
+
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.completeExceptionally(e);
+                e.printStackTrace();
+            }
+
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+
+                Type listType = new TypeToken<User>() {
+                }.getType();
+                User users = new Gson().fromJson(response.body().string(), listType);
+
+                result.complete(users.getName());
+
+
+            }});
+        return result;
     }
 
 

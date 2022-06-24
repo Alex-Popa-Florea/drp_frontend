@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/My Scripts/drp02/app/src/main/res/drawable/button_grid.xml" value="0.158" />
-        <entry key="..\:/My Scripts/drp02/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/My Scripts/drp02/app/src/main/res/layout/feed.xml" value="0.18802083333333333" />
-        <entry key="..\:/My Scripts/drp02/app/src/main/res/layout/login_screen.xml" value="0.18802083333333333" />
-        <entry key="..\:/My Scripts/drp02/app/src/main/res/layout/other_profile.xml" value="0.18802083333333333" />
-        <entry key="..\:/My Scripts/drp02/app/src/main/res/layout/signup_screen.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.218" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/drawable/ic_launcher_background.xml" value="0.218" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/drawable/wardrobe_grid_item.xml" value="0.218" />
@@ -23,11 +17,15 @@
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/fragment_first.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/fragment_second.xml" value="0.2015625" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/item_details.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/login_screen.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/my_friends.xml" value="0.1" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/my_friends_elem.xml" value="0.22" />
-        <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/other_profile.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/my_likes.xml" value="0.1" />
+        <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/other_profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/other_user_likes.xml" value="0.22" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/post_layout.xml" value="0.22" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/profile.xml" value="0.22" />
+        <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/signup_screen.xml" value="0.22" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/wardrobe_grid_item.xml" value="0.1" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/layout/wardrobe_row_layout.xml" value="0.21331521739130435" />
         <entry key="..\:/Users/adhit/StudioProjects/DRP02/app/src/main/res/menu/bottom_bar.xml" value="0.1" />

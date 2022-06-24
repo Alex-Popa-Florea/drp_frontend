@@ -275,22 +275,6 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 List<WardrobeItem> likedItems = new Gson().fromJson(response.body().string(), listType);
                 result.complete(likedItems);
 
-//                mHandler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        for (WardrobeItem item : likedItems) {
-//                            //Log.e("adhithi","item "+item.getId().toString() + " Wardrobe item " + wardrobeItems.get(position).getId());
-//                            //likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_600__1_);
-//
-//                            if (item.getId().equals(wardrobeItems.get(position).getId())) {
-//                                Log.e("adhithi", "wheee " + wardrobeItems.get(position).getItemName());
-//                                ((ImageButton)view.findViewById(R.id.likeButtonFeed)).setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_6200);
-//                                break;
-//                            }
-//                        }
-//                    }
-//                });
-
 
             }});
         return result;
