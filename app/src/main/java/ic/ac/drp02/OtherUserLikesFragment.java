@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -36,7 +38,8 @@ import okhttp3.Response;
 
 public class OtherUserLikesFragment extends Fragment {
 
-    private final OkHttpClient client = new OkHttpClient();
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
     private OtherUserLikesBinding binding;
     private Handler mHandler;
     private RecyclerView recyclerView;
@@ -72,8 +75,12 @@ public class OtherUserLikesFragment extends Fragment {
         binding.theirSharedWaredrobeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = fragment.getArguments();
+                int uid = bundle.getInt("uid");
+                Bundle newBundle = new Bundle();
+                newBundle.putInt("uid", uid);
                 NavHostFragment.findNavController(OtherUserLikesFragment.this)
-                        .navigate(R.id.action_otherUserLikesFragment_to_otherProfileFragment);
+                        .navigate(R.id.action_otherUserLikesFragment_to_otherProfileFragment, newBundle);
             }
         });
 
@@ -130,10 +137,11 @@ public class OtherUserLikesFragment extends Fragment {
 
     private void getWardrobe() {
         mHandler = new Handler(Looper.getMainLooper());
+        String url = "https://drp02-backend.herokuapp.com/likes/liked_items/" + this.getArguments().getInt("uid");
         Request request = new Request.Builder()
-                .url("https://drp02-backend.herokuapp.com/wardrobe")
-
+                .url(url)
                 .build();
+        cookieHelper.setCookie(url,"uid", StaticUser.getUid());
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override

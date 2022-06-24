@@ -2,6 +2,7 @@ package ic.ac.drp02;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,8 +89,13 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //display other users profile
+                //might need to send uid with a bundle
+                // ill do that bit
+                Bundle bundle = new Bundle();
+                bundle.putInt("uid", model.getUid());
                 NavHostFragment.findNavController(fragment)
-                        .navigate(R.id.action_addFriend_to_otherProfileFragment);
+                        .navigate(R.id.action_addFriend_to_otherProfileFragment, bundle);
             }});
     }
 

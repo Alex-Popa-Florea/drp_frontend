@@ -61,6 +61,8 @@ public class MyFriendsAdapter extends RecyclerView.Adapter<MyFriendsAdapter.View
                         .navigate(R.id.action_myFriends_to_otherProfileFragment, bundle);
             }});
 
+
+
     }
 
     @Override

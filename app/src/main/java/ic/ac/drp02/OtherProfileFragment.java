@@ -77,18 +77,22 @@ public class OtherProfileFragment extends Fragment {
         binding.theirLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = fragment.getArguments();
+                int uid = bundle.getInt("uid");
+                Bundle newBundle = new Bundle();
+                newBundle.putInt("uid", uid);
                 NavHostFragment.findNavController(OtherProfileFragment.this)
-                        .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment);
+                        .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment, newBundle);
             }
         });
 
-        binding.addFriendsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(OtherProfileFragment.this)
-                        .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment);
-            }
-        });
+//        binding.addFriendsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(OtherProfileFragment.this)
+//                        .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment);
+//            }
+//        });
 
     }
 
