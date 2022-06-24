@@ -127,7 +127,7 @@ public class AddItem extends Fragment {
                 NewWardrobeItem itemToAdd = new NewWardrobeItem(Arrays.asList("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photoName + ".jpeg"),descriptionToAdd, Collections.emptyList(), nameToAdd, typeToAdd,0, timeStamp);
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 Gson gson = new Gson();
-                String url = "https://drp02-backend.herokuapp.com/items/insert_item";
+                String url = "https://drp02-backend.herokuapp.com/items/insert";
                 cookieHelper.setCookie(url,"uid", StaticUser.getUid());
                 Request request = new Request.Builder()
                         .url(url)

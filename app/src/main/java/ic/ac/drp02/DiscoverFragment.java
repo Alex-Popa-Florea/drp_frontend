@@ -124,9 +124,9 @@ public class DiscoverFragment extends Fragment {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        FeedRecyclerAdapter adapter = new FeedRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment);
+                        //FeedRecyclerAdapter adapter = new FeedRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment);
 
-                        recyclerView.setAdapter(adapter);
+                        //recyclerView.setAdapter(adapter);
                         Log.e("adhithi",wardrobeItems.toString());
 
 

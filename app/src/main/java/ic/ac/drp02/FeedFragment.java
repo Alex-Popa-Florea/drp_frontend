@@ -35,7 +35,7 @@ import okhttp3.Response;
 public class FeedFragment extends Fragment {
     private FeedBinding binding;
     private RecyclerView recyclerView;
-    private Handler mHandler;
+    private Handler mHandler = new Handler(Looper.getMainLooper());;
     private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
     private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
     private Fragment fragment = this;
@@ -56,6 +56,7 @@ public class FeedFragment extends Fragment {
         getWardrobe();
 
 
+
         return binding.getRoot();
     }
 
@@ -72,8 +73,7 @@ public class FeedFragment extends Fragment {
     }
 
     private void getWardrobe() {
-        mHandler = new Handler(Looper.getMainLooper());
-        String url = "https://drp02-backend.herokuapp.com/items/feed";
+        String url = "https://drp02-backend.herokuapp.com/items/discover";
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -108,7 +108,7 @@ public class FeedFragment extends Fragment {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        FeedRecyclerAdapter adapter = new FeedRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment);
+                        FeedRecyclerAdapter adapter = new FeedRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment, mHandler);
 
                         recyclerView.setAdapter(adapter);
                         Log.e("adhithi",wardrobeItems.toString());

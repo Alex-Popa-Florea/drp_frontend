@@ -27,19 +27,23 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
 import ic.ac.drp02.databinding.MyLikesBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LikesFragment extends Fragment {
-    private final OkHttpClient client = new OkHttpClient();
     private MyLikesBinding binding;
     private Handler mHandler;
     private RecyclerView recyclerView;
     private Fragment fragment = this;
+    private OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+    private final OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -59,7 +63,7 @@ public class LikesFragment extends Fragment {
         //ArrayList<WardrobeItem> wardrobeItems = new ArrayList<>(Arrays.asList(item1, item2, item3));
 //        GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), wardrobeItems, this);
 //        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-        getWardrobe();
+        getLikes();
         return binding.getRoot();
 
     }
@@ -127,13 +131,20 @@ public class LikesFragment extends Fragment {
         }
     }
 
-    private void getWardrobe() {
+    private void getLikes() {
         mHandler = new Handler(Looper.getMainLooper());
-        Request request = new Request.Builder()
-                .url("https://drp02-backend.herokuapp.com/wardrobe")
 
+        String url = "https://drp02-backend.herokuapp.com/likes/liked_items";
+        Request request = new Request.Builder()
+                .url(url)
                 .build();
-        //List<String> results = Collections.emptyList();.get()
+        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+
+//        Request request = new Request.Builder()
+//                .url("https://drp02-backend.herokuapp.com/likes/liked_items")
+//
+//                .build();
+//        //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -148,15 +159,8 @@ public class LikesFragment extends Fragment {
 
 
                 Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
-                List<WardrobeItem> wardrobeItems = new Gson().fromJson(response.body().string(), listType);
+                List<WardrobeItem> likedItems = new Gson().fromJson(response.body().string(), listType);
 
-                List<WardrobeItem> likedItems = new ArrayList<>();
-
-                for (WardrobeItem item : wardrobeItems) {
-                    if (item.getLikes() > 0) {
-                        likedItems.add(item);
-                    }
-                }
 
                 mHandler.post(new Runnable() {
                     @Override
