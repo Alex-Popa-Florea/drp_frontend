@@ -94,6 +94,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
                 // ill do that bit
                 Bundle bundle = new Bundle();
                 bundle.putInt("uid", model.getUid());
+                bundle.putString("username", model.getName());
                 NavHostFragment.findNavController(fragment)
                         .navigate(R.id.action_addFriend_to_otherProfileFragment, bundle);
             }});

@@ -71,14 +71,17 @@ public class OtherProfileFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Bundle bundle = fragment.getArguments();
+        String name = bundle.getString("username");
+        int uid = bundle.getInt("uid");
 
-
+        TextView username = binding.getRoot().findViewById(R.id.profile_user_name);
+        username.setText(name);
 
         binding.theirLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = fragment.getArguments();
-                int uid = bundle.getInt("uid");
+
                 Bundle newBundle = new Bundle();
                 newBundle.putInt("uid", uid);
                 NavHostFragment.findNavController(OtherProfileFragment.this)
