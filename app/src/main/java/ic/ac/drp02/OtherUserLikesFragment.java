@@ -71,6 +71,12 @@ public class OtherUserLikesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = fragment.getArguments();
+        String name = bundle.getString("username");
+        int uid = bundle.getInt("uid");
+
+        TextView username = binding.getRoot().findViewById(R.id.likes_profile_user_name);
+        username.setText(name);
 
         binding.theirSharedWaredrobeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +85,7 @@ public class OtherUserLikesFragment extends Fragment {
                 int uid = bundle.getInt("uid");
                 Bundle newBundle = new Bundle();
                 newBundle.putInt("uid", uid);
+                newBundle.putString("username", bundle.getString("username"));
                 NavHostFragment.findNavController(OtherUserLikesFragment.this)
                         .navigate(R.id.action_otherUserLikesFragment_to_otherProfileFragment, newBundle);
             }

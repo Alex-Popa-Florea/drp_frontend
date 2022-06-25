@@ -80,7 +80,7 @@ public class OtherProfileFragment extends Fragment {
         String name = bundle.getString("username");
         int uid = bundle.getInt("uid");
 
-        TextView username = binding.getRoot().findViewById(R.id.profile_user_name);
+        TextView username = binding.getRoot().findViewById(R.id.other_profile_user_name);
         username.setText(name);
 
         binding.theirLikesProfile.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +89,7 @@ public class OtherProfileFragment extends Fragment {
 
                 Bundle newBundle = new Bundle();
                 newBundle.putInt("uid", uid);
+                newBundle.putString("username", bundle.getString("username"));
                 NavHostFragment.findNavController(OtherProfileFragment.this)
                         .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment, newBundle);
             }

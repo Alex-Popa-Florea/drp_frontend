@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LikesFragment extends Fragment {
@@ -77,12 +75,12 @@ public class LikesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        TextView username = binding.getRoot().findViewById(R.id.profile_user_name);
-//        try {
-//            username.setText(getUsername().get());
-//        } catch (ExecutionException | InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        TextView username = binding.getRoot().findViewById(R.id.likes_profile_user_name);
+        try {
+            username.setText(getUsername().get());
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
         binding.myLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,37 +227,37 @@ public class LikesFragment extends Fragment {
 
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.N)
-//    private CompletableFuture<String> getUsername() {
-//        String url = "https://drp02-backend.herokuapp.com/user/get_user";
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .build();
-//        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
-//        CompletableFuture<String> result = new CompletableFuture<>();
-//
-//
-//
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                result.completeExceptionally(e);
-//                e.printStackTrace();
-//            }
-//
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//
-//
-//                Type listType = new TypeToken<User>() {
-//                }.getType();
-//                User users = new Gson().fromJson(response.body().string(), listType);
-//
-//                result.complete(users.getName());
-//
-//
-//            }});
-//        return result;
-//    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private CompletableFuture<String> getUsername() {
+        String url = "https://drp02-backend.herokuapp.com/user/get_user";
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        CompletableFuture<String> result = new CompletableFuture<>();
+
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.completeExceptionally(e);
+                e.printStackTrace();
+            }
+
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+
+                Type listType = new TypeToken<User>() {
+                }.getType();
+                User users = new Gson().fromJson(response.body().string(), listType);
+
+                result.complete(users.getName());
+
+
+            }});
+        return result;
+    }
 }

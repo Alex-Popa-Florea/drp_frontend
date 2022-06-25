@@ -39,7 +39,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/streamlinehq_interface_user_circle_interface_essential_600"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_user_name3" />
+        app:layout_constraintTop_toBottomOf="@+id/likes_profile_user_name" />
 
     <TextView
         android:id="@+id/profile_user_rating3"
@@ -60,7 +60,7 @@
         app:srcCompat="@drawable/streamlinehq_interface_favorite_star_interface_essential_600" />
 
     <TextView
-        android:id="@+id/profile_user_name3"
+        android:id="@+id/likes_profile_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
