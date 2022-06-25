@@ -63,11 +63,11 @@
             android:id="@+id/action_likesFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_likesFragment_to_itemDetails"
-            app:destination="@id/itemDetails" />
-        <action
             android:id="@+id/action_likesFragment_to_myFriends"
             app:destination="@id/myFriends" />
+        <action
+            android:id="@+id/action_likesFragment_to_othersItemDetails"
+            app:destination="@id/othersItemDetails" />
     </fragment><action android:id="@+id/action_global_itemDetails" app:destination="@id/itemDetails"/>
     <fragment
         android:id="@+id/discoverFragment"
@@ -124,4 +124,8 @@
             android:id="@+id/action_signupAccount_to_feedFragment"
             app:destination="@id/feedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/othersItemDetails"
+        android:name="ic.ac.drp02.OthersItemDetails"
+        android:label="OthersItemDetails" /><action android:id="@+id/action_global_othersItemDetails" app:destination="@id/othersItemDetails"/>
 </navigation>

@@ -182,11 +182,8 @@ public class LikesFragment extends Fragment {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                                GridRecyclerAdapter customAdapter = new GridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(likedItems), fragment);
+                                OthersGridRecyclerAdapter customAdapter = new OthersGridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(likedItems), fragment);
                                 recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-
-
-
                     }
                 });
             }
