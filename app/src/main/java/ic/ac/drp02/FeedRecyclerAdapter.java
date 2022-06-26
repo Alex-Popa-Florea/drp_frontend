@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -86,6 +87,8 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         holder.description.setText(model.getDescription());
         //holder.itemName.setText(model.getItemName());
         holder.itemType.setText(model.getItemType());
+        holder.username.setText(model.getUsername());
+
         Log.e("adhithi", model.getImageUrl());
         Picasso.get().load(model.getImageUrl()).into(holder.image);
 
@@ -187,8 +190,11 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
             @Override
             public void onClick(View view) {
                 //bundle things to go to other profile screen but pass on wardrobe item class
+                Bundle newBundle = new Bundle();
+                newBundle.putInt("uid", model.getUid());
+                newBundle.putString("username", model.getUsername());
                 NavHostFragment.findNavController(fragment)
-                        .navigate(R.id.action_feedFragment_to_otherProfileFragment);
+                        .navigate(R.id.action_global_otherProfileFragment, newBundle);
             }});
     }
 
@@ -203,7 +209,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     // your views such as TextView and Imageview.
     public static class Viewholder extends RecyclerView.ViewHolder {
         private final ImageView image;
-        private final TextView description, itemType;
+        private final TextView description, itemType, username;
         private final ImageButton likeButton;
 
         public Viewholder(@NonNull View itemView) {
@@ -213,6 +219,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
             //itemName = itemView.findViewById(R.id.item_name);
             itemType = itemView.findViewById(R.id.item_type);
             likeButton = itemView.findViewById(R.id.likeButtonFeed);
+            username = itemView.findViewById(R.id.user_name);
         }
     }
 
