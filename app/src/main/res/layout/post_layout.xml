@@ -49,7 +49,7 @@
                 android:id="@+id/likeButtonFeed"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="15dp"
                 android:background="@null"
                 android:scaleType="fitXY"
@@ -57,31 +57,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/streamlinehq_interface_favorite_heart_interface_essential_600__1_" />
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="15dp"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/likeButtonFeed"
-                app:srcCompat="@drawable/streamlinehq_interface_share_interface_essential_600" />
-
             <TextView
                 android:id="@+id/feed_description"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="15dp"
                 android:text="Item Description"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/imageButton2" />
+                app:layout_constraintStart_toEndOf="@+id/likeButtonFeed" />
 
             <TextView
                 android:id="@+id/user_name"
@@ -111,34 +98,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/item_name"
-                android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="200dp"
-                android:text="Item Name"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/feed_profile_icon"
-                app:layout_constraintTop_toBottomOf="@+id/user_name" />
-
-            <TextView
                 android:id="@+id/item_type"
                 android:layout_width="0dp"
                 android:layout_height="25dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="95dp"
                 android:text="Item Type"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/item_name"
+                app:layout_constraintStart_toEndOf="@+id/feed_profile_icon"
                 app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
             <ImageButton
                 android:id="@+id/feed_profile_icon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@null"
                 android:scaleType="fitXY"

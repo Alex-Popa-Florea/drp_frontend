@@ -14,7 +14,7 @@
         android:text="Item details:"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/itemName"
+        app:layout_constraintBottom_toTopOf="@+id/itemType"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -29,17 +29,6 @@
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
-
-    <EditText
-        android:id="@+id/itemName"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintStart_toEndOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView8"
@@ -72,32 +61,22 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="30dp"
-        android:gravity="center_vertical"
-        android:text="Name:"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="70dp"
         android:layout_height="45dp"
+        android:layout_marginStart="30dp"
         android:gravity="center_vertical"
         android:text="Type:"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintStart_toEndOf="@+id/itemName" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"

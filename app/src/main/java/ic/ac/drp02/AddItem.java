@@ -73,8 +73,8 @@ public class AddItem extends Fragment {
             public void onClick(View view) {
                 EditText editDescription  = (EditText) binding.getRoot().findViewById(R.id.itemToAddDescription);
                 String descriptionToAdd = editDescription.getText().toString();
-                EditText editName = (EditText) binding.getRoot().findViewById(R.id.itemName);
-                String nameToAdd = editName.getText().toString();
+                //EditText editName = (EditText) binding.getRoot().findViewById(R.id.itemName);
+                //String nameToAdd = editName.getText().toString();
                 EditText editType = (EditText) binding.getRoot().findViewById(R.id.itemType);
                 String typeToAdd = editType.getText().toString();
                 String photoName = null;
@@ -124,7 +124,7 @@ public class AddItem extends Fragment {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); //maybe refactor?
                 String timeStamp  = dtf.format(LocalDateTime.now());
                 timeStamp = timeStamp.replace(" ","T");
-                NewWardrobeItem itemToAdd = new NewWardrobeItem(Arrays.asList("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photoName + ".jpeg"),descriptionToAdd, Collections.emptyList(), nameToAdd, typeToAdd,0, timeStamp);
+                NewWardrobeItem itemToAdd = new NewWardrobeItem(Arrays.asList("https://drpbucket.s3.eu-west-2.amazonaws.com/" + photoName + ".jpeg"),descriptionToAdd, Collections.emptyList(), "nameToAdd", typeToAdd,0, timeStamp);
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 Gson gson = new Gson();
                 String url = "https://drp02-backend.herokuapp.com/items/insert";

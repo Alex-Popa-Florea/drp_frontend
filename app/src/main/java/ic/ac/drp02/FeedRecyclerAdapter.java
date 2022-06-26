@@ -84,7 +84,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         // to set data to textview and imageview of each card layout SORT THIS SHIT OUT
         WardrobeItem model = wardrobeItems.get(position);
         holder.description.setText(model.getDescription());
-        holder.itemName.setText(model.getItemName());
+        //holder.itemName.setText(model.getItemName());
         holder.itemType.setText(model.getItemType());
         Log.e("adhithi", model.getImageUrl());
         Picasso.get().load(model.getImageUrl()).into(holder.image);
@@ -203,14 +203,14 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
     // your views such as TextView and Imageview.
     public static class Viewholder extends RecyclerView.ViewHolder {
         private final ImageView image;
-        private final TextView description, itemName, itemType;
+        private final TextView description, itemType;
         private final ImageButton likeButton;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.feed_image);
             description = itemView.findViewById(R.id.feed_description);
-            itemName = itemView.findViewById(R.id.item_name);
+            //itemName = itemView.findViewById(R.id.item_name);
             itemType = itemView.findViewById(R.id.item_type);
             likeButton = itemView.findViewById(R.id.likeButtonFeed);
         }

@@ -32,7 +32,7 @@ public class OthersItemDetails extends Fragment {
     private OthersItemDetailsBinding binding;
     ImageView selectedImage;
     TextView description;
-    TextView itemName;
+    //TextView itemName;
     TextView itemType;
     TextView numLikes;
     int id;
@@ -56,7 +56,7 @@ public class OthersItemDetails extends Fragment {
 
         selectedImage = (ImageView) binding.getRoot().findViewById(R.id.imageView); // init a ImageView
         description = (TextView) binding.getRoot().findViewById(R.id.description);
-        itemName = (TextView) binding.getRoot().findViewById(R.id.details_item_name);
+        //itemName = (TextView) binding.getRoot().findViewById(R.id.details_item_name);
         itemType = (TextView) binding.getRoot().findViewById(R.id.details_item_type);
         numLikes = (TextView) binding.getRoot().findViewById(R.id.likesNumber);
 
@@ -66,7 +66,7 @@ public class OthersItemDetails extends Fragment {
         if (bundle != null) {
             Picasso.get().load(bundle.getString("image")).into(selectedImage);
             description.setText(bundle.getString("description"));
-            itemName.setText(bundle.getString("itemName"));
+            //itemName.setText(bundle.getString("itemName"));
             itemType.setText(bundle.getString("itemType"));
             numLikes.setText(bundle.getString("numLikes"));
             id = bundle.getInt("id");
