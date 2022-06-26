@@ -1,8 +1,27 @@
 package ic.ac.drp02;
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.riversun.okhttp3.OkHttp3CookieHelper;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class WardrobeItem {
 
@@ -17,6 +36,9 @@ public class WardrobeItem {
     private String type_;
     private Integer likes;
 
+
+
+
     public WardrobeItem(Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
         this.uid = uid;
         this.pics = pics;
@@ -27,7 +49,9 @@ public class WardrobeItem {
         this.type_ = type_;
         this.likes = likes;
     }
-
+    public Integer getUid() {
+        return uid;
+    }
     public Integer getId() {
         return id;
     }
@@ -56,6 +80,50 @@ public class WardrobeItem {
         return likes;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public String getUsername() {
+        try {
+            return retrieveUsername().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private CompletableFuture<String> retrieveUsername() {
+        OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+        OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
+        String url = "https://drp02-backend.herokuapp.com/user/get_user_by_id/" + uid;
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        CompletableFuture<String> result = new CompletableFuture<>();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                result.completeExceptionally(e);
+                e.printStackTrace();
+            }
+
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+
+                Type listType = new TypeToken<User>() {
+                }.getType();
+                User users = new Gson().fromJson(response.body().string(), listType);
+
+                result.complete(users.getName());
+
+
+            }});
+        return result;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,4 +136,5 @@ public class WardrobeItem {
     public int hashCode() {
         return Objects.hash(id, uid, imageUrl, pics, tags, description, name, type_, likes);
     }
+
 }

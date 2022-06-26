@@ -127,5 +127,5 @@
     <fragment
         android:id="@+id/othersItemDetails"
         android:name="ic.ac.drp02.OthersItemDetails"
-        android:label="OthersItemDetails" /><action android:id="@+id/action_global_othersItemDetails" app:destination="@id/othersItemDetails"/>
+        android:label="OthersItemDetails" /><action android:id="@+id/action_global_othersItemDetails" app:destination="@id/othersItemDetails"/><action android:id="@+id/action_global_otherProfileFragment" app:destination="@id/otherProfileFragment"/>
 </navigation>
