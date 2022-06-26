@@ -83,7 +83,7 @@ public class WardrobeItem {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String getUsername() {
         try {
-            return retrieveUsername().get();
+            return retrieveUser().get().getName();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
             return null;
@@ -91,7 +91,7 @@ public class WardrobeItem {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private CompletableFuture<String> retrieveUsername() {
+    private CompletableFuture<User> retrieveUser() {
         OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
         OkHttpClient client = new OkHttpClient().newBuilder().cookieJar(cookieHelper.cookieJar()).build();
         String url = "https://drp02-backend.herokuapp.com/user/get_user_by_id/" + uid;
@@ -99,7 +99,7 @@ public class WardrobeItem {
                 .url(url)
                 .build();
         cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
-        CompletableFuture<String> result = new CompletableFuture<>();
+        CompletableFuture<User> result = new CompletableFuture<>();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -117,11 +117,21 @@ public class WardrobeItem {
                 }.getType();
                 User users = new Gson().fromJson(response.body().string(), listType);
 
-                result.complete(users.getName());
+                result.complete(users);
 
 
             }});
         return result;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Integer getNumFriends() {
+        try {
+            return retrieveUser().get().getUsers_following().size();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

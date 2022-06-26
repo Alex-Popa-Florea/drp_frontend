@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -75,9 +76,13 @@ public class OtherProfileFragment extends Fragment {
         Bundle bundle = fragment.getArguments();
         String name = bundle.getString("username");
         int uid = bundle.getInt("uid");
+        int numFriends = bundle.getInt("friends");
 
         TextView username = binding.getRoot().findViewById(R.id.other_profile_user_name);
         username.setText(name);
+
+        Button friends = binding.getRoot().findViewById(R.id.uploadimage3);
+        friends.setText(Integer.toString(numFriends));
 
         binding.theirLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +91,7 @@ public class OtherProfileFragment extends Fragment {
                 Bundle newBundle = new Bundle();
                 newBundle.putInt("uid", uid);
                 newBundle.putString("username", bundle.getString("username"));
+                newBundle.putInt("friends", numFriends);
                 NavHostFragment.findNavController(OtherProfileFragment.this)
                         .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment, newBundle);
             }

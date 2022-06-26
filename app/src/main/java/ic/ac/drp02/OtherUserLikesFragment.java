@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -74,18 +75,23 @@ public class OtherUserLikesFragment extends Fragment {
         Bundle bundle = fragment.getArguments();
         String name = bundle.getString("username");
         int uid = bundle.getInt("uid");
+        int numFriends = bundle.getInt("friends");
+
 
         TextView username = binding.getRoot().findViewById(R.id.likes_profile_user_name);
         username.setText(name);
+
+        Button friends = binding.getRoot().findViewById(R.id.uploadimage5);
+        friends.setText(Integer.toString(numFriends));
 
         binding.theirSharedWaredrobeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = fragment.getArguments();
-                int uid = bundle.getInt("uid");
                 Bundle newBundle = new Bundle();
                 newBundle.putInt("uid", uid);
                 newBundle.putString("username", bundle.getString("username"));
+                newBundle.putInt("friends", numFriends);
                 NavHostFragment.findNavController(OtherUserLikesFragment.this)
                         .navigate(R.id.action_otherUserLikesFragment_to_otherProfileFragment, newBundle);
             }

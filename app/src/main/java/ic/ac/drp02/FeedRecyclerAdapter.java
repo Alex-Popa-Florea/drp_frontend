@@ -190,6 +190,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 Bundle newBundle = new Bundle();
                 newBundle.putInt("uid", model.getUid());
                 newBundle.putString("username", model.getUsername());
+                newBundle.putInt("friends", model.getNumFriends());
                 NavHostFragment.findNavController(fragment)
                         .navigate(R.id.action_global_otherProfileFragment, newBundle);
             }});

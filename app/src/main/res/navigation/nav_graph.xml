@@ -92,7 +92,7 @@
     <fragment
         android:id="@+id/myFriends"
         android:name="ic.ac.drp02.MyFriends"
-        android:label="MyFriends" >
+        android:label="My Friends" >
         <action
             android:id="@+id/action_myFriends_to_otherProfileFragment"
             app:destination="@id/otherProfileFragment" />
