@@ -2,7 +2,6 @@ package ic.ac.drp02;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,7 +21,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ic.ac.drp02.analytics.TimeToLike;
-import ic.ac.drp02.databinding.FeedBinding;
 import ic.ac.drp02.databinding.PostLayoutBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -30,7 +28,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -161,7 +158,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                         .url(url)
                         .post(RequestBody.create(null, new byte[0]))
                         .build();
-                cookieHelper.setCookie(url,"uid", StaticUser.getUid());
+                cookieHelper.setCookie(url,"uid", StaticUser.getUidStr());
 
                 final boolean likedBefore = liked;
 
@@ -169,12 +166,12 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("thaarukanisannoying", "failed "+ StaticUser.getUid().toString());
+                        Log.e("thaarukanisannoying", "failed "+ StaticUser.getUidStr().toString());
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Log.e("thaarukanisannoying", StaticUser.getUid());
+                        Log.e("thaarukanisannoying", StaticUser.getUidStr());
                         if (likedBefore) {
                             holder.likeButton.setImageResource(R.drawable.streamlinehq_interface_favorite_heart_interface_essential_600__1_);
                         }
@@ -261,7 +258,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
         CompletableFuture<List<WardrobeItem>> result = new CompletableFuture<>();
 
 

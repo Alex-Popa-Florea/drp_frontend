@@ -3,6 +3,8 @@ package ic.ac.drp02;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
     private Context context;
     private ArrayList<User> friendsToAdd;
     Fragment fragment;
+    private Handler mHandler;
     PostLayoutBinding binding;
     View view;
 
@@ -64,12 +67,13 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mHandler = new Handler(Looper.getMainLooper());
                 String url =  "https://drp02-backend.herokuapp.com/user/follow/" + friendsToAdd.get(position).getUid().toString();
                 Request request = new Request.Builder()
                         .url(url)
                         .post(RequestBody.create(null,new byte[0]))
                         .build();
-                cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+                cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
                 //List<String> results = Collections.emptyList();.get()
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -78,7 +82,12 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        //Log.e("adhithi", )
+                        friendsToAdd.remove(model);
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position,friendsToAdd.size());}});
                     }
                 });
                 Log.e("adhithi", "hihihi");

@@ -88,7 +88,7 @@ public class SignupAccount extends Fragment {
                             Headers responseHeaders = response.headers();
                             StaticUser staticUser = StaticUser.getInstance();
                             String uid = responseHeaders.values("Set-Cookie").get(0).split(";")[0].split("=")[1];
-                            StaticUser.setUid(uid);
+                            StaticUser.setUidStr(uid);
 
                             mHandler = new Handler(Looper.getMainLooper());
                             mHandler.post(new Runnable() {

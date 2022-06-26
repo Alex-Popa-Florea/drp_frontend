@@ -128,7 +128,7 @@ public class AddItem extends Fragment {
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 Gson gson = new Gson();
                 String url = "https://drp02-backend.herokuapp.com/items/insert";
-                cookieHelper.setCookie(url,"uid", StaticUser.getUid());
+                cookieHelper.setCookie(url,"uid", StaticUser.getUidStr());
                 Request request = new Request.Builder()
                         .url(url)
                         .post(RequestBody.create(JSON, gson.toJson(itemToAdd)))

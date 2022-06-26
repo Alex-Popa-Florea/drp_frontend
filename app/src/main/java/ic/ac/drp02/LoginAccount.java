@@ -78,8 +78,8 @@ public class LoginAccount extends Fragment {
                             Headers responseHeaders = response.headers();
                             String uid = responseHeaders.values("Set-Cookie").get(0).split(";")[0].split("=")[1];
                             Log.e("Thaarukan",uid);
-                            StaticUser.setUid(uid);
-                            Log.e("Thaarukan", StaticUser.getUid());
+                            StaticUser.setUidStr(uid);
+                            Log.e("Thaarukan", StaticUser.getUidStr());
 
                             mHandler = new Handler(Looper.getMainLooper());
                             mHandler.post(new Runnable() {

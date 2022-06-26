@@ -148,7 +148,7 @@ public class OtherUserLikesFragment extends Fragment {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        cookieHelper.setCookie(url,"uid", StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid", StaticUser.getUidStr());
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override

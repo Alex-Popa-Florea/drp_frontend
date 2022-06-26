@@ -21,7 +21,6 @@ import org.riversun.okhttp3.OkHttp3CookieHelper;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -60,13 +59,9 @@ public class MyFriends extends Fragment {
         Friend friend2 = new Friend("Grandpaarukan", "1");
         Friend friend3 = new Friend("Lemonade", "5");
         List<User> friends = null;
-        try {
-            friends = getFriends().get();
-            MyFriendsAdapter adapter = new MyFriendsAdapter(getActivity().getApplicationContext(), new ArrayList<>(friends), fragment);
-            recyclerView.setAdapter(adapter);
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        friends = StaticUser.getFriends();
+        MyFriendsAdapter adapter = new MyFriendsAdapter(getActivity().getApplicationContext(), new ArrayList<>(friends), fragment);
+        recyclerView.setAdapter(adapter);
 
 
 
@@ -86,33 +81,7 @@ public class MyFriends extends Fragment {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private CompletableFuture<List<User>> getFriends() {
-        String url = "https://drp02-backend.herokuapp.com/user/following";
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
-        CompletableFuture<List<User>> result = new CompletableFuture<>();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                result.completeExceptionally(e);
-                e.printStackTrace();
-            }
-
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
-                Type listType = new TypeToken<ArrayList<User>>() {
-                }.getType();
-                List<User> users = new Gson().fromJson(response.body().string(), listType);
-                result.complete(users);
-            }});
-        return result;
-    }
 
 
     @Override

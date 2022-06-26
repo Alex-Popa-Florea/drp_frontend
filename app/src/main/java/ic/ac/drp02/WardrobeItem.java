@@ -98,7 +98,7 @@ public class WardrobeItem {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
         CompletableFuture<String> result = new CompletableFuture<>();
 
         client.newCall(request).enqueue(new Callback() {

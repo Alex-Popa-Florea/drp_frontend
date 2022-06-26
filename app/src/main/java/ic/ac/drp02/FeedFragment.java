@@ -77,8 +77,8 @@ public class FeedFragment extends Fragment {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        Log.e("Thaarukan", StaticUser.getUid());
-        cookieHelper.setCookie(url,"uid", StaticUser.getUid());
+        Log.e("Thaarukan", StaticUser.getUidStr());
+        cookieHelper.setCookie(url,"uid", StaticUser.getUidStr());
         //List<String> results = Collections.emptyList();.get()
         client.newCall(request).enqueue(new Callback() {
             @Override

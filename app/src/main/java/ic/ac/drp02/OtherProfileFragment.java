@@ -118,7 +118,7 @@ public class OtherProfileFragment extends Fragment {
                 .url(url)
 
                 .build();
-        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
         //List<String> results = Collections.emptyList();.get()
         new Thread(new Runnable() {
             @Override

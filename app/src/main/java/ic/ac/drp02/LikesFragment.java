@@ -155,7 +155,7 @@ public class LikesFragment extends Fragment {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
 
 //        Request request = new Request.Builder()
 //                .url("https://drp02-backend.herokuapp.com/likes/liked_items")
@@ -230,7 +230,7 @@ public class LikesFragment extends Fragment {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        cookieHelper.setCookie(url,"uid",StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid",StaticUser.getUidStr());
         CompletableFuture<String> result = new CompletableFuture<>();
 
 

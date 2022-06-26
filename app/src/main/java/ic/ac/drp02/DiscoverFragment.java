@@ -91,7 +91,7 @@ public class DiscoverFragment extends Fragment {
     private void getWardrobe() {
         mHandler = new Handler(Looper.getMainLooper());
         String url = "https://drp02-backend.herokuapp.com/items/discover";
-        cookieHelper.setCookie(url,"uid", StaticUser.getUid());
+        cookieHelper.setCookie(url,"uid", StaticUser.getUidStr());
         Request request = new Request.Builder()
                 .url(url)
                 .build();
