@@ -2,6 +2,7 @@ package ic.ac.drp02;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public class WardrobeItem {
 
@@ -53,5 +54,18 @@ public class WardrobeItem {
 
     public Integer getLikes() {
         return likes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WardrobeItem that = (WardrobeItem) o;
+        return Objects.equals(id, that.id) && Objects.equals(uid, that.uid) && Objects.equals(imageUrl, that.imageUrl) && Objects.equals(pics, that.pics) && Objects.equals(tags, that.tags) && Objects.equals(description, that.description) && Objects.equals(name, that.name) && Objects.equals(type_, that.type_) && Objects.equals(likes, that.likes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, uid, imageUrl, pics, tags, description, name, type_, likes);
     }
 }

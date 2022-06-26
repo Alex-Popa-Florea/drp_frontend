@@ -43,6 +43,7 @@ public class OtherProfileFragment extends Fragment {
     private Handler mHandler;
     private RecyclerView recyclerView;
     private Fragment fragment = this;
+    private List<WardrobeItem> oldList = Collections.emptyList();
 
     @Override
     public View onCreateView(
@@ -119,6 +120,22 @@ public class OtherProfileFragment extends Fragment {
                 .build();
         cookieHelper.setCookie(url,"uid",StaticUser.getUid());
         //List<String> results = Collections.emptyList();.get()
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    makeRequest(request);
+                }
+            }
+        }).start();
+    }
+
+    private void makeRequest(Request request){
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -145,20 +162,24 @@ public class OtherProfileFragment extends Fragment {
 //                Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
 //                List<WardrobeItem> yourClassList = new Gson().fromJson(response.body().string(), listType);
                 //User user = gson.fromJson(,User.class);
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        OthersGridRecyclerAdapter customAdapter = new OthersGridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment);
-                        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-                        Log.e("adhithi", wardrobeItems.toString());
-
-
-                    }
-                });
+                if(wardrobeItems != oldList){
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            OthersGridRecyclerAdapter customAdapter = new OthersGridRecyclerAdapter(getActivity().getApplicationContext(), new ArrayList<>(wardrobeItems), fragment);
+                            recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+                            Log.e("adhithi", wardrobeItems.toString());
+                        }
+                    });
+                    Log.e("Thaarukan", "onResponse: works but empty" );
+                    oldList = wardrobeItems;
+                }else{
+                    Log.e("Thaarukan", "onResponse: works");
+                }
             }
         });
-
     }
+
 
     private void getWardrobe2(ListView listView) {
         mHandler = new Handler(Looper.getMainLooper());
