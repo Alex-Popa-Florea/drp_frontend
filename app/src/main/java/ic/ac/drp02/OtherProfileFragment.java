@@ -44,7 +44,7 @@ public class OtherProfileFragment extends Fragment {
     private Handler mHandler;
     private RecyclerView recyclerView;
     private Fragment fragment = this;
-    private List<WardrobeItem> oldList = Collections.emptyList();
+    private static List<WardrobeItem> oldList = Collections.emptyList();
 
     @Override
     public View onCreateView(
@@ -129,7 +129,7 @@ public class OtherProfileFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true){
+                while(getActivity() != null){
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -168,7 +168,8 @@ public class OtherProfileFragment extends Fragment {
 //                Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
 //                List<WardrobeItem> yourClassList = new Gson().fromJson(response.body().string(), listType);
                 //User user = gson.fromJson(,User.class);
-                if(wardrobeItems != oldList){
+                if(!wardrobeItems.equals(oldList)){
+
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -177,10 +178,7 @@ public class OtherProfileFragment extends Fragment {
                             Log.e("adhithi", wardrobeItems.toString());
                         }
                     });
-                    Log.e("Thaarukan", "onResponse: works but empty" );
                     oldList = wardrobeItems;
-                }else{
-                    Log.e("Thaarukan", "onResponse: works");
                 }
             }
         });
