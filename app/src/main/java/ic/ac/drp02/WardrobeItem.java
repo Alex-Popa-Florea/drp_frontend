@@ -25,7 +25,7 @@ import okhttp3.Response;
 
 public class WardrobeItem {
 
-    private Integer id;
+    private Integer item_id;
     private Integer uid;
     private String imageUrl;
     private List<String> pics;
@@ -39,7 +39,8 @@ public class WardrobeItem {
 
 
 
-    public WardrobeItem(Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
+    public WardrobeItem(Integer item_id, Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
+        this.item_id = item_id;
         this.uid = uid;
         this.pics = pics;
         this.imageUrl = pics.get(0);
@@ -53,7 +54,7 @@ public class WardrobeItem {
         return uid;
     }
     public Integer getId() {
-        return id;
+        return item_id;
     }
 
     public String getDescription() {
@@ -139,12 +140,12 @@ public class WardrobeItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WardrobeItem that = (WardrobeItem) o;
-        return Objects.equals(id, that.id) && Objects.equals(uid, that.uid) && Objects.equals(imageUrl, that.imageUrl) && Objects.equals(pics, that.pics) && Objects.equals(tags, that.tags) && Objects.equals(description, that.description) && Objects.equals(name, that.name) && Objects.equals(type_, that.type_) && Objects.equals(likes, that.likes);
+        return Objects.equals(item_id, that.item_id) && Objects.equals(uid, that.uid) && Objects.equals(imageUrl, that.imageUrl) && Objects.equals(pics, that.pics) && Objects.equals(tags, that.tags) && Objects.equals(description, that.description) && Objects.equals(name, that.name) && Objects.equals(type_, that.type_) && Objects.equals(likes, that.likes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, uid, imageUrl, pics, tags, description, name, type_, likes);
+        return Objects.hash(item_id, uid, imageUrl, pics, tags, description, name, type_, likes);
     }
 
 }
