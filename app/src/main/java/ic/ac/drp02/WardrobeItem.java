@@ -12,6 +12,7 @@ import org.riversun.okhttp3.OkHttp3CookieHelper;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -35,11 +36,14 @@ public class WardrobeItem {
     private String name;
     private String type_;
     private Integer likes;
+    private String creation_time;
 
 
+    public String getCreation_time() {
+        return creation_time;
+    }
 
-
-    public WardrobeItem(Integer item_id, Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes) {
+    public WardrobeItem(Integer item_id, Integer uid, List<String> pics, String description, List<String> tags, String name, String type_, Integer likes, String creation_time) {
         this.item_id = item_id;
         this.uid = uid;
         this.pics = pics;
@@ -49,6 +53,7 @@ public class WardrobeItem {
         this.name = name;
         this.type_ = type_;
         this.likes = likes;
+        this.creation_time = creation_time;
     }
     public Integer getUid() {
         return uid;

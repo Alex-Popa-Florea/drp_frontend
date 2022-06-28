@@ -1,5 +1,6 @@
 package ic.ac.drp02;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +22,10 @@ import org.riversun.okhttp3.OkHttp3CookieHelper;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import ic.ac.drp02.databinding.FeedBinding;
@@ -87,6 +91,7 @@ public class FeedFragment extends Fragment {
                 e.printStackTrace();
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 //
@@ -99,6 +104,7 @@ public class FeedFragment extends Fragment {
 
                 Type listType = new TypeToken<ArrayList<WardrobeItem>>(){}.getType();
                 List<WardrobeItem> wardrobeItems = new Gson().fromJson(response.body().string(), listType);
+                wardrobeItems.sort(Comparator.comparing(o -> o.getCreation_time()));
                 Collections.reverse(wardrobeItems);
 
 
