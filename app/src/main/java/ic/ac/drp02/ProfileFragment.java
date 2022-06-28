@@ -78,6 +78,9 @@ public class ProfileFragment extends Fragment {
         Button friends = binding.getRoot().findViewById(R.id.my_friends_button);
         friends.setText(Integer.toString(StaticUser.getFriends().size()));
 
+        TextView phoneText = binding.getRoot().findViewById(R.id.profile_phone_number);
+        phoneText.setText(StaticUser.getPhoneNum());
+
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override

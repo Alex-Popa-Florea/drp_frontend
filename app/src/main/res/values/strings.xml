@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">drp02</string>
+    <string name="app_name">My Shared Wardrobe</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Your Wardrobe</string>

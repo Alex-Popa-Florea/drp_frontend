@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -76,11 +77,13 @@ public class LikesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView username = binding.getRoot().findViewById(R.id.likes_profile_user_name);
-        try {
-            username.setText(getUsername().get());
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        username.setText(StaticUser.getUsername());
+
+        Button friends = binding.getRoot().findViewById(R.id.my_friends_button_likes);
+        friends.setText(Integer.toString(StaticUser.getFriends().size()));
+
+        TextView phoneText = binding.getRoot().findViewById(R.id.profile_phone_number2);
+        phoneText.setText(StaticUser.getPhoneNum());
 
         binding.myLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
