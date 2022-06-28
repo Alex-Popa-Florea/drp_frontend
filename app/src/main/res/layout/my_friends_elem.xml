@@ -31,17 +31,6 @@
                 app:layout_constraintStart_toEndOf="@+id/my_friend_user_icon"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/my_friend_user_rating"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="290dp"
-                android:text="Stars"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/my_friend_user_icon"
-                app:layout_constraintTop_toBottomOf="@+id/my_friend_user_name" />
-
             <ImageButton
                 android:id="@+id/my_friend_user_icon"
                 android:layout_width="50dp"
@@ -53,14 +42,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/streamlinehq_interface_user_circle_interface_essential_600" />
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                app:layout_constraintStart_toEndOf="@+id/my_friend_user_rating"
-                app:layout_constraintTop_toBottomOf="@+id/my_friend_user_name"
-                app:srcCompat="@drawable/streamlinehq_interface_favorite_star_interface_essential_600" />
 
             <ImageView
                 android:id="@+id/imageView3"

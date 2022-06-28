@@ -60,7 +60,6 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
     public void onBindViewHolder(@NonNull AddFriendAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
         // to set data to textview and imageview of each card layout SORT THIS SHIT OUT
         User model = friendsToAdd.get(position);
-        Log.i("thaarukan",holder.rating.toString());
         holder.name.setText(model.getName());
 
         ImageButton addButton = view.findViewById(R.id.add_friend_add_button);
@@ -105,6 +104,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
                 bundle.putInt("uid", model.getUid());
                 bundle.putString("username", model.getName());
                 bundle.putInt("friends", model.getUsers_following().size());
+                bundle.putString("phone", model.getPhone_no());
                 NavHostFragment.findNavController(fragment)
                         .navigate(R.id.action_addFriend_to_otherProfileFragment, bundle);
             }});
@@ -120,12 +120,10 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
     // View holder class for initializing of
     // your views such as TextView and Imageview.
     public static class Viewholder extends RecyclerView.ViewHolder {
-        private final TextView rating;
         private final TextView name;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            rating = itemView.findViewById(R.id.add_friend_user_rating);
             name = itemView.findViewById(R.id.add_friend_user_name);
         }
     }

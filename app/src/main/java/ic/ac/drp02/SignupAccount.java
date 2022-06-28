@@ -60,9 +60,12 @@ public class SignupAccount extends Fragment {
                 EditText editConfirmPassword  = (EditText) binding.getRoot().findViewById(R.id.confirm_password_text_input);
                 String confirmPassword = editConfirmPassword.getText().toString();
 
+                EditText editTextPhone  = (EditText) binding.getRoot().findViewById(R.id.editTextPhone);
+                String phone = editConfirmPassword.getText().toString();
+
                 //check password and confirmpassword are same
 
-                NewUserData newUserData = new NewUserData(name, email, password);
+                NewUserData newUserData = new NewUserData(name, email, password, phone);
                 Gson gson = new Gson();
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 String url = "https://drp02-backend.herokuapp.com/user/signup";

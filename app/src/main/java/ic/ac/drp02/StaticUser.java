@@ -1,6 +1,7 @@
 package ic.ac.drp02;
 
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -98,6 +99,19 @@ public class StaticUser {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
+    public static String getPhoneNum() {
+        if (user != null) {
+            return user.getPhone_no();
+        }
+        try {
+            return retrieveUser().get().getPhone_no();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static Integer getUserid() {
         if (user != null) {
             return user.getUid();
@@ -142,10 +156,11 @@ public class StaticUser {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                String resp = response.body().string();
+                Log.e("stoopid", resp);
                 Type listType = new TypeToken<ArrayList<User>>() {
                 }.getType();
-                List<User> users = new Gson().fromJson(response.body().string(), listType);
+                List<User> users = new Gson().fromJson(resp, listType);
                 result.complete(users);
             }});
         return result;

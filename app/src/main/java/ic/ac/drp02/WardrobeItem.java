@@ -135,6 +135,17 @@ public class WardrobeItem {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public String getPhoneNum() {
+        try {
+            return retrieveUser().get().getPhone_no();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -183,6 +183,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 });
             }});
         ImageButton profileButton = view.findViewById(R.id.feed_profile_icon);
+
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,6 +192,7 @@ public class FeedRecyclerAdapter  extends RecyclerView.Adapter<FeedRecyclerAdapt
                 newBundle.putInt("uid", model.getUid());
                 newBundle.putString("username", model.getUsername());
                 newBundle.putInt("friends", model.getNumFriends());
+                newBundle.putString("phone", model.getPhoneNum());
                 NavHostFragment.findNavController(fragment)
                         .navigate(R.id.action_global_otherProfileFragment, newBundle);
             }});

@@ -9,13 +9,19 @@ public class User {
     private final String email;
     private final List<Integer> items_liked;
     private final List<Integer> users_following;
+    private final String phone_no;
 
-    public User(int uid,String name,String email,List<Integer> items_liked,List<Integer> users_following){
+    public String getPhone_no() {
+        return phone_no;
+    }
+
+    public User(int uid, String name, String email, List<Integer> items_liked, List<Integer> users_following, String phone_no){
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.items_liked = items_liked;
         this.users_following = users_following;
+        this.phone_no = phone_no;
     }
 
     public List<Integer> getUsers_following() {

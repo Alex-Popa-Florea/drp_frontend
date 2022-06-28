@@ -59,6 +59,7 @@ public class MyFriendsAdapter extends RecyclerView.Adapter<MyFriendsAdapter.View
                 bundle.putInt("uid", model.getUid());
                 bundle.putString("username", model.getName());
                 bundle.putInt("friends", model.getUsers_following().size());
+                bundle.putString("phone", model.getPhone_no());
                 NavHostFragment.findNavController(fragment)
                         .navigate(R.id.action_myFriends_to_otherProfileFragment, bundle);
             }});
@@ -77,12 +78,10 @@ public class MyFriendsAdapter extends RecyclerView.Adapter<MyFriendsAdapter.View
     // View holder class for initializing of
     // your views such as TextView and Imageview.
     public static class Viewholder extends RecyclerView.ViewHolder {
-        private final TextView rating;
         private final TextView name;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            rating = itemView.findViewById(R.id.my_friend_user_rating);
             name = itemView.findViewById(R.id.my_friend_user_name);
         }
     }

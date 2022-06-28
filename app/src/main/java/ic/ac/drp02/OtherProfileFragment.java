@@ -77,12 +77,16 @@ public class OtherProfileFragment extends Fragment {
         String name = bundle.getString("username");
         int uid = bundle.getInt("uid");
         int numFriends = bundle.getInt("friends");
+        String phone = bundle.getString("phone");
 
         TextView username = binding.getRoot().findViewById(R.id.other_profile_user_name);
         username.setText(name);
 
         Button friends = binding.getRoot().findViewById(R.id.uploadimage3);
         friends.setText(Integer.toString(numFriends));
+
+        TextView phoneText = binding.getRoot().findViewById(R.id.profile_phone_number3);
+        phoneText.setText(phone);
 
         binding.theirLikesProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +96,7 @@ public class OtherProfileFragment extends Fragment {
                 newBundle.putInt("uid", uid);
                 newBundle.putString("username", bundle.getString("username"));
                 newBundle.putInt("friends", numFriends);
+                newBundle.putString("phone", phone);
                 NavHostFragment.findNavController(OtherProfileFragment.this)
                         .navigate(R.id.action_otherProfileFragment_to_otherUserLikesFragment, newBundle);
             }
